@@ -8,13 +8,15 @@
 #include <vector>
 
 #include "Shader.hpp"
-
+#include "IndexBuffer.hpp"
+#include "VertexBuffer.hpp"
+#include "VertexArray.hpp"
+#include "VertexLayout.h"
 
 int main(void)
 {
     GLFWwindow* window;
 
-    /* Initialize the library */
     if (!glfwInit())
         return -1;
 
@@ -26,7 +28,6 @@ int main(void)
       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-    /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
@@ -34,7 +35,6 @@ int main(void)
         return -1;
     }
 
-    /* Make the window's context current */
     glfwMakeContextCurrent(window);
     
     if(glewInit() != GLEW_OK)
@@ -42,62 +42,43 @@ int main(void)
         std::cout << "failed" << std::endl;
     }
     
-    struct Vertex
-    {
-        float position[2];
-        float color[4];
-    };
-    
-    std::vector<Vertex> v = {
+    std::vector<Layout> vertexData = {
         {{-.5f, -.5f}, {1.0, 0.0, 0.0, 1.0}},
         {{.5f, -.5f}, {0.0, 1.0, 0.0, 1.0}},
         {{.5f, .5f}, {0.0, 0.0, 1.0, 1.0}},
-        
-        //{{-.5f, -.5f}, {0.0, 1.0, 0.0, 1.0}},
         {{-.5f, .5f}, {1.0, 0.0, 0.0, 1.0}}
-        //{{.5f, -.5f}, {0.0, 0.0, 1.0, 1.0}}
     };
-    
+    Vertex data(vertexData);
     
     std::vector<unsigned int> indices = {
         0, 1, 2,
         2, 3, 0
     };
     
-    unsigned int VBO, VAO;
-    glGenBuffers(1, &VBO);
+    VertexBuffer vb(data);
+    
+    
+    unsigned int VAO;
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, v.size() * sizeof(Vertex), v.data(), GL_STATIC_DRAW);
 
+    IndexBuffer ib(indices);
     
-    unsigned int ibo;
-    glGenBuffers(1, &ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices.data(), GL_STATIC_DRAW);
-    
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, position));
-
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, color));
+    VertexArray va;
+    va.AddBuffer(vb, data);
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     shader.Bind();
     
-    /* Loop until the user closes the window */
+    
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //glDrawArrays(GL_TRIANGLES, 0, 3);
-        glDrawElements(GL_TRIANGLES, int(indices.size()), GL_UNSIGNED_INT, nullptr);
-        /* Swap front and back buffers */
+        glDrawElements(GL_TRIANGLES, (int) indices.size(), GL_UNSIGNED_INT, nullptr);
         glfwSwapBuffers(window);
 
-        /* Poll for and process events */
         glfwPollEvents();
     }
 

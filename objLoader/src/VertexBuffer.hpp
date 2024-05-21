@@ -1,13 +1,17 @@
-//
-//  VertexBuffer.hpp
-//  objLoader
-//
-//  Created by Kantaş Onur Kılıç on 2024-05-21.
-//
+#pragma once
 
-#ifndef VertexBuffer_hpp
-#define VertexBuffer_hpp
+#include "VertexLayout.h"
+#include <GL/glew.h>
 
-#include <stdio.h>
 
-#endif /* VertexBuffer_hpp */
+class VertexBuffer
+{
+private:
+    unsigned int m_ID;
+public:
+    VertexBuffer(Vertex &data);
+    ~VertexBuffer();
+    
+    void Bind() const;
+    void Unbind() const;
+};

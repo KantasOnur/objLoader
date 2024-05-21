@@ -1,13 +1,16 @@
-//
-//  IndexBuffer.hpp
-//  objLoader
-//
-//  Created by Kantaş Onur Kılıç on 2024-05-20.
-//
+#pragma once
 
-#ifndef IndexBuffer_hpp
-#define IndexBuffer_hpp
+#include <GL/glew.h>
+#include <vector>
 
-#include <stdio.h>
-
-#endif /* IndexBuffer_hpp */
+class IndexBuffer
+{
+private:
+    unsigned int m_ID;
+public:
+    IndexBuffer(std::vector<unsigned int> &indices);
+    ~IndexBuffer();
+    
+    void Bind() const;
+    void Unbind() const;
+};
