@@ -1,8 +1,9 @@
 #include "VertexArray.hpp"
-
+#include <iostream>
 VertexArray::VertexArray()
 {
     glGenVertexArrays(1, &m_ID);
+    Bind();
 }
 
 VertexArray::~VertexArray()

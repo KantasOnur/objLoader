@@ -56,15 +56,9 @@ int main(void)
     };
     
     VertexBuffer vb(data);
-    
-    
-    unsigned int VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
-
-    IndexBuffer ib(indices);
-    
     VertexArray va;
+    IndexBuffer ib(indices);
+
     va.AddBuffer(vb, data);
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
