@@ -17,6 +17,11 @@ void Shader::Unbind() const
     glUseProgram(0);
 }
 
+void Shader::SetUniformMat4f(const std::string &variable, const glm::mat4 &matrix)
+{
+    glUniformMatrix4fv(GetLocation(variable), 1, GL_FALSE, &matrix[0][0]);
+}
+
 Shader::~Shader()
 {
     glDeleteProgram(m_RendererID);
@@ -83,4 +88,9 @@ unsigned int Shader::CompileShader(const std::string& source, unsigned int type)
     }
     
     return id;
+}
+
+int Shader::GetLocation(const std::string& variable)
+{
+    return glGetUniformLocation(m_RendererID, variable.c_str());
 }

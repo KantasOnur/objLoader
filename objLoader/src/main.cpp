@@ -13,6 +13,9 @@
 #include "VertexArray.hpp"
 #include "VertexLayout.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 int main(void)
 {
     GLFWwindow* window;
@@ -34,7 +37,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-
+    
     glfwMakeContextCurrent(window);
     
     if(glewInit() != GLEW_OK)
@@ -57,13 +60,16 @@ int main(void)
     
     VertexBuffer vb(data);
     VertexArray va;
+    va.AddBuffer(vb, data);
+
     IndexBuffer ib(indices);
 
-    va.AddBuffer(vb, data);
+    glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f); //4:3 to match the aspect ratio
+                                                                        //these are essentially new bounderies for the vertex
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     shader.Bind();
-    
+    shader.SetUniformMat4f("u_ModelViewProjection", proj);
     
     while (!glfwWindowShouldClose(window))
     {

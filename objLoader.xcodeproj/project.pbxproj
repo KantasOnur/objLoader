@@ -47,6 +47,7 @@
 		77C6A8672BFC941A003AFBEF /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
 		77C6A8692BFCE088003AFBEF /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
 		77C6A86A2BFCE088003AFBEF /* VertexArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
+		77C6A8742BFD1701003AFBEF /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 		775479272BFA685F00CCC13D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				77C6A8732BFD16C1003AFBEF /* vendors */,
 				7754794C2BFB1B5F00CCC13D /* shaders */,
 				775479202BFA67D800CCC13D /* main.cpp */,
 				77C6A8592BFB8AEF003AFBEF /* Shader.cpp */,
@@ -140,6 +142,14 @@
 				7754794E2BFB1B8F00CCC13D /* Basic.frag */,
 			);
 			path = shaders;
+			sourceTree = "<group>";
+		};
+		77C6A8732BFD16C1003AFBEF /* vendors */ = {
+			isa = PBXGroup;
+			children = (
+				77C6A8742BFD1701003AFBEF /* glm */,
+			);
+			path = vendors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +339,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/objLoader/Dependencies/include;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/objLoader/Dependencies/include,
+					"$PROJECT_DIR/objLoader/src/vendors/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/objLoader/Dependencies/library",
@@ -342,7 +355,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/objLoader/Dependencies/include;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/objLoader/Dependencies/include,
+					"$PROJECT_DIR/objLoader/src/vendors/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/objLoader/Dependencies/library",
