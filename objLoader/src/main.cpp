@@ -16,6 +16,21 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
+
+glm::mat4 LookAt(glm::vec3 eye, glm::vec3 at, glm::vec3 up)
+{
+    glm::vec3 v = glm::normalize(at - eye);
+    glm::vec3 n = glm::normalize(glm::cross(v, up));
+    glm::vec3 u = glm::normalize(glm::cross(n, v));
+    v = -v;
+    
+    glm::mat4 result(glm::vec4(n, -glm::dot(n, eye)),
+                     glm::vec4(u, -glm::dot(u, eye)),
+                     glm::vec4(v, -glm::dot(v, eye)),
+                     glm::vec4(0.0f, 0.0f, 0.0f, 1.0));
+    return result;
+}
+
 int main(void)
 {
     GLFWwindow* window;
@@ -31,7 +46,7 @@ int main(void)
       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -46,10 +61,10 @@ int main(void)
     }
     
     std::vector<Layout> vertexData = {
-        {{-.5f, -.5f}, {1.0, 0.0, 0.0, 1.0}},
-        {{.5f, -.5f}, {0.0, 1.0, 0.0, 1.0}},
-        {{.5f, .5f}, {0.0, 0.0, 1.0, 1.0}},
-        {{-.5f, .5f}, {1.0, 0.0, 0.0, 1.0}}
+        {{100.0f, 100.0f}, {1.0, 0.0, 0.0, 1.0}},
+        {{200.0f, 100.0f}, {0.0, 1.0, 0.0, 1.0}},
+        {{200.0f, 200.0f}, {0.0, 0.0, 1.0, 1.0}},
+        {{100.0f, 200.0f}, {1.0, 0.0, 0.0, 1.0}}
     };
     Vertex data(vertexData);
     
@@ -63,13 +78,15 @@ int main(void)
     va.AddBuffer(vb, data);
 
     IndexBuffer ib(indices);
-
-    glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f); //4:3 to match the aspect ratio
-                                                                        //these are essentially new bounderies for the vertex
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     shader.Bind();
-    shader.SetUniformMat4f("u_ModelViewProjection", proj);
+    
+    glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, 1.0f, -1.0f);
+    shader.SetUniformMat4f("u_ProjectionMatrix", proj);
+    //glm::vec3 eye(0, 0, 0);
+    
+    
     
     while (!glfwWindowShouldClose(window))
     {
