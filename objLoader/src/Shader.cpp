@@ -19,7 +19,13 @@ void Shader::Unbind() const
 
 void Shader::SetUniformMat4f(const std::string &variable, const glm::mat4 &matrix)
 {
-    glUniformMatrix4fv(GetLocation(variable), 1, GL_FALSE, &matrix[0][0]);
+    int location = GetLocation(variable);
+    if (location >= 0)
+    {
+        glUniformMatrix4fv(GetLocation(variable), 1, GL_FALSE, &matrix[0][0]);
+    }
+    else
+        std::cout << "Could not find position" << std::endl;
 }
 
 Shader::~Shader()
