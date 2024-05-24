@@ -1,5 +1,5 @@
 #define GLM_ENABLE_EXPERIMENTAL
-
+#include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -14,38 +14,23 @@
 #include "VertexBuffer.hpp"
 #include "VertexArray.hpp"
 #include "VertexLayout.h"
+#include "Camera.hpp"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/string_cast.hpp"
 
-float eyeZ = 0;
-float eyeX = 0;
-void keyCallBack(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    std::cout << key << std::endl;
-    switch (key) {
-        case 87:
-            eyeZ -= 0.1;
-            break;
-            
-        case 83:
-            eyeZ += 0.1;
-            break;
-            
-        case 68:
-            eyeX += 0.1;
-            break;
-        case 65:
-            eyeX -= 0.1;
-            break;
-    }
-}
 
 int main(void)
 {
     GLFWwindow* window;
 
+    if(SDL_Init(SDL_INIT_EVERYTHING) < 0 )
+    {
+        std::cout << "Can't load sdl" << std::endl;
+        return -1;
+    }
+    
     if (!glfwInit())
         return -1;
 
@@ -57,13 +42,12 @@ int main(void)
       glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     #endif
 
-    window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
         return -1;
     }
-    glfwSetKeyCallback(window, keyCallBack);
     
     glfwMakeContextCurrent(window);
     
@@ -73,10 +57,10 @@ int main(void)
     }
     
     std::vector<Layout> vertexData = {
-        {{-0.5f, -0.5f}, {1.0, 0.0, 0.0, 1.0}},
-        {{0.5f, -0.5f}, {0.0, 1.0, 0.0, 1.0}},
-        {{0.5f, 0.5f}, {0.0, 0.0, 1.0, 1.0}},
-        {{-0.5f, 0.5f}, {1.0, 0.0, 0.0, 1.0}}
+        {{-0.5f, -0.5f, -2.0f}, {1.0, 0.0, 0.0, 1.0}},
+        {{0.5f, -0.5f, -2.0f}, {0.0, 1.0, 0.0, 1.0}},
+        {{0.5f, 0.5f, -2.0f}, {0.0, 0.0, 1.0, 1.0}},
+        {{-0.5f, 0.5f, -2.0f}, {1.0, 0.0, 0.0, 1.0}}
     };
     Vertex data(vertexData);
     
@@ -94,21 +78,18 @@ int main(void)
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     shader.Bind();
     
-    //glm::mat4 proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, 1.0f, -1.0f);
-    
-   
+    Camera camera(100.0f, 640.0f/480.0f, 0.1f, 10.0f);
     
     while (!glfwWindowShouldClose(window))
     {
+        camera.PlaceCamera(glm::mat4(1.0f), shader, "u_MVP");
+        camera.MoveEye();
+        
+        //std::cout << glm::to_string(camera.GetEye()) << std::endl;
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
         
-        glm::mat4 proj = glm::perspective(glm::radians(100.0f), 960.0f/540.0f, 0.01f, 1000.0f);
-        glm::mat4 view = glm::lookAt(glm::vec3(eyeX, 0, eyeZ), glm::vec3(eyeX, 0, eyeZ - 1.0), glm::vec3(0, 1, 0));
-        
-        shader.SetUniformMat4f("u_ProjectionMatrix", proj);
-        shader.SetUniformMat4f("u_ViewMatrix", view);
-        
+        //std::cout << glm::to_string(camera.GetEye()) << std::endl;
         glDrawElements(GL_TRIANGLES, (int) indices.size(), GL_UNSIGNED_INT, nullptr);
         glfwSwapBuffers(window);
         glfwPollEvents();

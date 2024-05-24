@@ -3,7 +3,7 @@
 
 struct Layout
 {
-    float position[2];
+    float position[3];
     float color[4];
 };
 
@@ -27,7 +27,7 @@ public:
         offsetof(Layout, color)
     };
     
-    const unsigned int m_Counts[2] = {2, 4};
+    const unsigned int m_Counts[2] = {3, 4};
     const unsigned int m_Elements = 2;
     
 };

@@ -11,10 +11,13 @@
 		775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479442BFA70A500CCC13D /* libglfw.3.4.dylib */; };
 		775479492BFA711500CCC13D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479392BFA6FA800CCC13D /* OpenGL.framework */; };
 		7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */; };
+		7784658E2C0057AD000875F1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */; };
+		778465912C0059E4000875F1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */; };
 		77C6A85B2BFB8AEF003AFBEF /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8592BFB8AEF003AFBEF /* Shader.cpp */; };
 		77C6A85E2BFC779A003AFBEF /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */; };
 		77C6A8682BFC941A003AFBEF /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8662BFC941A003AFBEF /* VertexBuffer.cpp */; };
 		77C6A86B2BFCE088003AFBEF /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8692BFCE088003AFBEF /* VertexArray.cpp */; };
+		77C6A87E2BFFB91C003AFBEF /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A87D2BFFB91C003AFBEF /* Camera.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +41,8 @@
 		7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.2.0.dylib; path = objLoader/Dependencies/library/libGLEW.2.2.0.dylib; sourceTree = "<group>"; };
 		7754794D2BFB1B7700CCC13D /* Basic.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Basic.vert; sourceTree = "<group>"; };
 		7754794E2BFB1B8F00CCC13D /* Basic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Basic.frag; path = objLoader/src/shaders/Basic.frag; sourceTree = SOURCE_ROOT; };
+		7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		7784658F2C0058F3000875F1 /* opt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = opt; path = ../../../../../opt; sourceTree = "<group>"; };
 		77C6A8592BFB8AEF003AFBEF /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
@@ -48,6 +53,9 @@
 		77C6A8692BFCE088003AFBEF /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
 		77C6A86A2BFCE088003AFBEF /* VertexArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
 		77C6A8742BFD1701003AFBEF /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
+		77C6A87C2BFFB725003AFBEF /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		77C6A87D2BFFB91C003AFBEF /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		77C6A88A2C004494003AFBEF /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "objLoader/Dependencies/library/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7784658E2C0057AD000875F1 /* libSDL2-2.0.0.dylib in Frameworks */,
 				7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */,
+				778465912C0059E4000875F1 /* libSDL2-2.0.0.dylib in Frameworks */,
 				775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */,
 				775479492BFA711500CCC13D /* OpenGL.framework in Frameworks */,
 			);
@@ -105,6 +115,8 @@
 				77C6A8672BFC941A003AFBEF /* VertexBuffer.hpp */,
 				77C6A8692BFCE088003AFBEF /* VertexArray.cpp */,
 				77C6A86A2BFCE088003AFBEF /* VertexArray.hpp */,
+				77C6A87C2BFFB725003AFBEF /* Camera.hpp */,
+				77C6A87D2BFFB91C003AFBEF /* Camera.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -128,6 +140,9 @@
 		775479382BFA6FA800CCC13D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7784658F2C0058F3000875F1 /* opt */,
+				77C6A88A2C004494003AFBEF /* libSDL2-2.0.0.dylib */,
+				7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */,
 				7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */,
 				775479392BFA6FA800CCC13D /* OpenGL.framework */,
 				775479442BFA70A500CCC13D /* libglfw.3.4.dylib */,
@@ -195,6 +210,8 @@
 				Base,
 			);
 			mainGroup = 775479142BFA67D800CCC13D;
+			packageReferences = (
+			);
 			productRefGroup = 7754791E2BFA67D800CCC13D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -213,6 +230,7 @@
 				77C6A8682BFC941A003AFBEF /* VertexBuffer.cpp in Sources */,
 				775479212BFA67D800CCC13D /* main.cpp in Sources */,
 				77C6A86B2BFCE088003AFBEF /* VertexArray.cpp in Sources */,
+				77C6A87E2BFFB91C003AFBEF /* Camera.cpp in Sources */,
 				77C6A85E2BFC779A003AFBEF /* IndexBuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +357,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					$PROJECT_DIR/objLoader/Dependencies/include,
 					"$PROJECT_DIR/objLoader/src/vendors/**",
@@ -346,6 +368,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/objLoader/Dependencies/library",
+					/opt/homebrew/Cellar/sdl2/2.30.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,6 +378,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					$PROJECT_DIR/objLoader/Dependencies/include,
 					"$PROJECT_DIR/objLoader/src/vendors/**",
@@ -362,6 +389,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/objLoader/Dependencies/library",
+					/opt/homebrew/Cellar/sdl2/2.30.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
