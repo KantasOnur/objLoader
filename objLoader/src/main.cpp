@@ -8,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <chrono>
 
 #include "Shader.hpp"
 #include "IndexBuffer.hpp"
@@ -20,9 +21,47 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/string_cast.hpp"
 
+glm::vec2 prevMousePos = {0.0f, 0.0f};
+float mouseSensetivity = 0.1f;
+
+Camera camera(100.0f, 640.0f/480.0f, 0.1f, 10.0f);
+glm::vec3 front = {0, 0, -1};
+
+float yaw = glm::degrees(atan2(front.z, front.x));
+float pitch = glm::degrees(atan2(front.y, sqrt(front.x * front.x + front.z * front.z)));
+void mouse_callback(GLFWwindow *window, double xpos, double ypos)
+{
+    
+    
+    float deltaX = xpos - 640.0f / 2;
+    float deltaY = ypos - 480.0f / 2;
+
+
+    float sensitivity = 0.1f;
+    yaw += sensitivity * deltaX;
+    pitch -= sensitivity * deltaY;
+
+    float maxPitch = 89.0f;
+    pitch = glm::clamp(pitch, -maxPitch, maxPitch);
+
+    front.x = (cos(glm::radians(yaw)) * cos(glm::radians(pitch)));
+    front.y = sin(glm::radians(pitch));
+    front.z = (sin(glm::radians(yaw)) * cos(glm::radians(pitch)));
+
+    front = glm::normalize(front);
+
+    camera.SetAt(front);
+
+    glfwSetCursorPos(window, 640.0f / 2, 480.0f / 2);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
+    
+}
 
 int main(void)
 {
+    std::cout << yaw << std::endl << pitch << std::endl;
+
     GLFWwindow* window;
 
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0 )
@@ -48,7 +87,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-    
+    glfwSetCursorPosCallback(window, mouse_callback);
     glfwMakeContextCurrent(window);
     
     if(glewInit() != GLEW_OK)
@@ -83,10 +122,7 @@ int main(void)
     while (!glfwWindowShouldClose(window))
     {
         camera.PlaceCamera(glm::mat4(1.0f), shader, "u_MVP");
-        camera.MoveEye();
-        
-        //std::cout << glm::to_string(camera.GetEye()) << std::endl;
-        /* Render here */
+
         glClear(GL_COLOR_BUFFER_BIT);
         
         //std::cout << glm::to_string(camera.GetEye()) << std::endl;

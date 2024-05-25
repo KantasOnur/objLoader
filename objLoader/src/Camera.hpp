@@ -6,6 +6,7 @@
 #include "Shader.hpp"
 #include <string>
 #include <SDL2/SDL.h>
+#include <GLFW/glfw3.h>
 
 class Camera
 {
@@ -21,10 +22,12 @@ private:
     
     glm::mat4 m_View = glm::lookAt(m_Eye, m_At, m_Up);
     glm::mat4 m_Proj;
+    float m_MoveSpeed = 0.02f;
+    float m_Yaw = glm::degrees(atan2(m_At.z, m_At.x));
+    float m_Pitch = atan2(m_At.y, sqrt(m_At.x * m_At.x + m_At.z * m_At.z));
+    float m_MouseSpeed = 0.1;
+    
 public:
-    
-    float m_MoveSpeed = 0.005;
-    
     Camera(const float& fov, const float& aspect, const float& near, const float& far)
     : m_Fov(fov), m_Aspect(aspect), m_Near(near), m_Far(far) 
     {
@@ -32,8 +35,8 @@ public:
     }
     
     void SetEye(glm::vec3 eye) {m_Eye = eye;}
-    void SetAt(glm::vec3 at) {m_Eye = at;}
-    void SetUp(glm::vec3 up) {m_Eye = up;}
+    void SetAt(glm::vec3 at) {m_At = at;}
+    void SetUp(glm::vec3 up) {m_Up = up;}
     
     glm::vec3 GetEye() {return m_Eye;}
     glm::vec3 GetAt() {return m_At;}
@@ -41,4 +44,6 @@ public:
     
     void PlaceCamera(const glm::mat4& model, Shader& shader, const std::string& uniform);
     void MoveEye();
+    void EyeLookAround(float& yaw, float& pitch) {m_Yaw += yaw; m_Pitch += pitch;}
+    void mouse_callback(GLFWwindow *window, float xpos, float ypos);
 };
