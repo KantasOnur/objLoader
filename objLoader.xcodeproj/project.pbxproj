@@ -42,7 +42,6 @@
 		7754794D2BFB1B7700CCC13D /* Basic.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Basic.vert; sourceTree = "<group>"; };
 		7754794E2BFB1B8F00CCC13D /* Basic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Basic.frag; path = objLoader/src/shaders/Basic.frag; sourceTree = SOURCE_ROOT; };
 		7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
-		7784658F2C0058F3000875F1 /* opt */ = {isa = PBXFileReference; lastKnownFileType = folder; name = opt; path = ../../../../../opt; sourceTree = "<group>"; };
 		77C6A8592BFB8AEF003AFBEF /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
@@ -140,7 +139,6 @@
 		775479382BFA6FA800CCC13D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7784658F2C0058F3000875F1 /* opt */,
 				77C6A88A2C004494003AFBEF /* libSDL2-2.0.0.dylib */,
 				7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */,
 				7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */,
