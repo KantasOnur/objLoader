@@ -11,11 +11,8 @@
 #include <chrono>
 
 #include "Shader.hpp"
-#include "IndexBuffer.hpp"
-#include "VertexBuffer.hpp"
-#include "VertexArray.hpp"
-#include "VertexLayout.h"
 #include "Camera.hpp"
+#include "Subject.hpp"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -24,7 +21,7 @@
 glm::vec2 prevMousePos = {0.0f, 0.0f};
 float mouseSensetivity = 0.1f;
 
-Camera camera(100.0f, 640.0f/480.0f, 0.1f, 10.0f);
+Camera camera(45.0f, 640.0f/480.0f, 0.1f, 10.0f);
 glm::vec3 front = {0, 0, -1};
 
 float yaw = glm::degrees(atan2(front.z, front.x));
@@ -60,7 +57,7 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos)
 
 int main(void)
 {
-    std::cout << yaw << std::endl << pitch << std::endl;
+    //std::cout << yaw << std::endl << pitch << std::endl;
 
     GLFWwindow* window;
 
@@ -87,6 +84,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
+    
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwMakeContextCurrent(window);
     
@@ -95,42 +93,19 @@ int main(void)
         std::cout << "failed" << std::endl;
     }
     
-    std::vector<Layout> vertexData = {
-        {{-0.5f, -0.5f, -2.0f}, {1.0, 0.0, 0.0, 1.0}},
-        {{0.5f, -0.5f, -2.0f}, {0.0, 1.0, 0.0, 1.0}},
-        {{0.5f, 0.5f, -2.0f}, {0.0, 0.0, 1.0, 1.0}},
-        {{-0.5f, 0.5f, -2.0f}, {1.0, 0.0, 0.0, 1.0}}
-    };
-    Vertex data(vertexData);
-    
-    std::vector<unsigned int> indices = {
-        0, 1, 2,
-        2, 3, 0
-    };
-    
-    VertexBuffer vb(data);
-    VertexArray va;
-    va.AddBuffer(vb, data);
-
-    IndexBuffer ib(indices);
-    
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
+    Subject square;
+    
     shader.Bind();
-    
-    Camera camera(100.0f, 640.0f/480.0f, 0.1f, 10.0f);
-    
-    while (!glfwWindowShouldClose(window))
+    while(!glfwWindowShouldClose(window))
     {
         camera.PlaceCamera(glm::mat4(1.0f), shader, "u_MVP");
-
         glClear(GL_COLOR_BUFFER_BIT);
-        
-        //std::cout << glm::to_string(camera.GetEye()) << std::endl;
-        glDrawElements(GL_TRIANGLES, (int) indices.size(), GL_UNSIGNED_INT, nullptr);
+        square.draw();
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
     glfwTerminate();
     return 0;
 }

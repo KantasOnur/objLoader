@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		775479212BFA67D800CCC13D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775479202BFA67D800CCC13D /* main.cpp */; };
 		775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479442BFA70A500CCC13D /* libglfw.3.4.dylib */; };
 		775479492BFA711500CCC13D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479392BFA6FA800CCC13D /* OpenGL.framework */; };
 		7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */; };
-		7784658E2C0057AD000875F1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */; };
 		778465912C0059E4000875F1 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */; };
-		77C6A85B2BFB8AEF003AFBEF /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8592BFB8AEF003AFBEF /* Shader.cpp */; };
-		77C6A85E2BFC779A003AFBEF /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */; };
-		77C6A8682BFC941A003AFBEF /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8662BFC941A003AFBEF /* VertexBuffer.cpp */; };
-		77C6A86B2BFCE088003AFBEF /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8692BFCE088003AFBEF /* VertexArray.cpp */; };
-		77C6A87E2BFFB91C003AFBEF /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A87D2BFFB91C003AFBEF /* Camera.cpp */; };
+		778465B52C06541C000875F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 775479202BFA67D800CCC13D /* main.cpp */; };
+		778465B62C06541C000875F1 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A8592BFB8AEF003AFBEF /* Shader.cpp */; };
+		778465B72C06541C000875F1 /* Shader.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */; };
+		778465BF2C06541C000875F1 /* Camera.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A87C2BFFB725003AFBEF /* Camera.hpp */; };
+		778465C02C06541C000875F1 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C6A87D2BFFB91C003AFBEF /* Camera.cpp */; };
+		778465C72C06FEAF000875F1 /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778465C52C06FEAF000875F1 /* IndexBuffer.cpp */; };
+		778465CB2C06FFF7000875F1 /* Subject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778465C92C06FFF7000875F1 /* Subject.cpp */; };
+		778465CE2C0700B5000875F1 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778465CC2C0700B5000875F1 /* VertexBuffer.cpp */; };
+		778465D12C077BE2000875F1 /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778465CF2C077BE2000875F1 /* VertexArray.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,15 +44,16 @@
 		7754794D2BFB1B7700CCC13D /* Basic.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Basic.vert; sourceTree = "<group>"; };
 		7754794E2BFB1B8F00CCC13D /* Basic.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Basic.frag; path = objLoader/src/shaders/Basic.frag; sourceTree = SOURCE_ROOT; };
 		7784658D2C0057AD000875F1 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		778465C52C06FEAF000875F1 /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
+		778465C62C06FEAF000875F1 /* IndexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IndexBuffer.hpp; sourceTree = "<group>"; };
+		778465C92C06FFF7000875F1 /* Subject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Subject.cpp; sourceTree = "<group>"; };
+		778465CA2C06FFF7000875F1 /* Subject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Subject.hpp; sourceTree = "<group>"; };
+		778465CC2C0700B5000875F1 /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
+		778465CD2C0700B5000875F1 /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
+		778465CF2C077BE2000875F1 /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
+		778465D02C077BE2000875F1 /* VertexArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
 		77C6A8592BFB8AEF003AFBEF /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
 		77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
-		77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IndexBuffer.cpp; sourceTree = "<group>"; };
-		77C6A85D2BFC779A003AFBEF /* IndexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IndexBuffer.hpp; sourceTree = "<group>"; };
-		77C6A85F2BFC796D003AFBEF /* VertexLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VertexLayout.h; sourceTree = "<group>"; };
-		77C6A8662BFC941A003AFBEF /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBuffer.cpp; sourceTree = "<group>"; };
-		77C6A8672BFC941A003AFBEF /* VertexBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexBuffer.hpp; sourceTree = "<group>"; };
-		77C6A8692BFCE088003AFBEF /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VertexArray.cpp; sourceTree = "<group>"; };
-		77C6A86A2BFCE088003AFBEF /* VertexArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VertexArray.hpp; sourceTree = "<group>"; };
 		77C6A8742BFD1701003AFBEF /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
 		77C6A87C2BFFB725003AFBEF /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		77C6A87D2BFFB91C003AFBEF /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
@@ -62,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7784658E2C0057AD000875F1 /* libSDL2-2.0.0.dylib in Frameworks */,
 				7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */,
 				778465912C0059E4000875F1 /* libSDL2-2.0.0.dylib in Frameworks */,
 				775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */,
@@ -93,6 +95,7 @@
 		7754791F2BFA67D800CCC13D /* objLoader */ = {
 			isa = PBXGroup;
 			children = (
+				778465A32C0636B4000875F1 /* srcrip */,
 				775479282BFA688000CCC13D /* Dependencies */,
 				775479272BFA685F00CCC13D /* src */,
 			);
@@ -102,18 +105,12 @@
 		775479272BFA685F00CCC13D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				778465C42C06FE93000875F1 /* GLobjects */,
 				77C6A8732BFD16C1003AFBEF /* vendors */,
 				7754794C2BFB1B5F00CCC13D /* shaders */,
 				775479202BFA67D800CCC13D /* main.cpp */,
 				77C6A8592BFB8AEF003AFBEF /* Shader.cpp */,
 				77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */,
-				77C6A85C2BFC779A003AFBEF /* IndexBuffer.cpp */,
-				77C6A85D2BFC779A003AFBEF /* IndexBuffer.hpp */,
-				77C6A85F2BFC796D003AFBEF /* VertexLayout.h */,
-				77C6A8662BFC941A003AFBEF /* VertexBuffer.cpp */,
-				77C6A8672BFC941A003AFBEF /* VertexBuffer.hpp */,
-				77C6A8692BFCE088003AFBEF /* VertexArray.cpp */,
-				77C6A86A2BFCE088003AFBEF /* VertexArray.hpp */,
 				77C6A87C2BFFB725003AFBEF /* Camera.hpp */,
 				77C6A87D2BFFB91C003AFBEF /* Camera.cpp */,
 			);
@@ -155,6 +152,28 @@
 				7754794E2BFB1B8F00CCC13D /* Basic.frag */,
 			);
 			path = shaders;
+			sourceTree = "<group>";
+		};
+		778465A32C0636B4000875F1 /* srcrip */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = srcrip;
+			sourceTree = "<group>";
+		};
+		778465C42C06FE93000875F1 /* GLobjects */ = {
+			isa = PBXGroup;
+			children = (
+				778465CA2C06FFF7000875F1 /* Subject.hpp */,
+				778465C92C06FFF7000875F1 /* Subject.cpp */,
+				778465CC2C0700B5000875F1 /* VertexBuffer.cpp */,
+				778465CD2C0700B5000875F1 /* VertexBuffer.hpp */,
+				778465C52C06FEAF000875F1 /* IndexBuffer.cpp */,
+				778465C62C06FEAF000875F1 /* IndexBuffer.hpp */,
+				778465CF2C077BE2000875F1 /* VertexArray.cpp */,
+				778465D02C077BE2000875F1 /* VertexArray.hpp */,
+			);
+			path = GLobjects;
 			sourceTree = "<group>";
 		};
 		77C6A8732BFD16C1003AFBEF /* vendors */ = {
@@ -224,12 +243,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77C6A85B2BFB8AEF003AFBEF /* Shader.cpp in Sources */,
-				77C6A8682BFC941A003AFBEF /* VertexBuffer.cpp in Sources */,
-				775479212BFA67D800CCC13D /* main.cpp in Sources */,
-				77C6A86B2BFCE088003AFBEF /* VertexArray.cpp in Sources */,
-				77C6A87E2BFFB91C003AFBEF /* Camera.cpp in Sources */,
-				77C6A85E2BFC779A003AFBEF /* IndexBuffer.cpp in Sources */,
+				778465B52C06541C000875F1 /* main.cpp in Sources */,
+				778465B62C06541C000875F1 /* Shader.cpp in Sources */,
+				778465CE2C0700B5000875F1 /* VertexBuffer.cpp in Sources */,
+				778465B72C06541C000875F1 /* Shader.hpp in Sources */,
+				778465C72C06FEAF000875F1 /* IndexBuffer.cpp in Sources */,
+				778465D12C077BE2000875F1 /* VertexArray.cpp in Sources */,
+				778465CB2C06FFF7000875F1 /* Subject.cpp in Sources */,
+				778465BF2C06541C000875F1 /* Camera.hpp in Sources */,
+				778465C02C06541C000875F1 /* Camera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +315,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -347,6 +370,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
