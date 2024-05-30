@@ -94,18 +94,30 @@ int main(void)
     }
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
-    Subject square;
-    
+    Subject* square = new Subject(shader);
     shader.Bind();
+    
     while(!glfwWindowShouldClose(window))
     {
         camera.PlaceCamera(glm::mat4(1.0f), shader, "u_MVP");
         glClear(GL_COLOR_BUFFER_BIT);
-        square.draw();
+        
+        if(square != nullptr)
+        {
+            square->translate(glm::vec3(1.0f, 0.0f, 0.0f));
+            square->translate(glm::vec3(0.0f, 1.0f, 0.0f));
+            square->draw(camera.m_View, camera.m_Proj);
+            /** TODO: - Implement a hierchy structure,
+                TODO: - Clean up the camera class,
+                TODO: - Handle all types of transformations.**/
+        }
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+    
+    delete square;
+    square = nullptr;
     glfwTerminate();
     return 0;
 }

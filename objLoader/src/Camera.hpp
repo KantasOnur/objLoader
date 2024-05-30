@@ -20,14 +20,15 @@ private:
     float m_Near;
     float m_Far;
     
-    glm::mat4 m_View = glm::lookAt(m_Eye, m_At, m_Up);
-    glm::mat4 m_Proj;
     float m_MoveSpeed = 0.02f;
     float m_Yaw = glm::degrees(atan2(m_At.z, m_At.x));
     float m_Pitch = atan2(m_At.y, sqrt(m_At.x * m_At.x + m_At.z * m_At.z));
     float m_MouseSpeed = 0.1;
     
 public:
+    glm::mat4 m_View = glm::lookAt(m_Eye, m_At, m_Up);
+    glm::mat4 m_Proj;
+    
     Camera(const float& fov, const float& aspect, const float& near, const float& far)
     : m_Fov(fov), m_Aspect(aspect), m_Near(near), m_Far(far) 
     {

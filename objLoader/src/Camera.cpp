@@ -5,9 +5,9 @@ void Camera::PlaceCamera(const glm::mat4& model, Shader& shader, const std::stri
     MoveEye();
     //std::cout << glm::to_string(m_At) << std::endl;
     m_View = glm::lookAt(m_Eye, m_Eye + m_At, m_Up);
-    glm::mat4 modelview = m_View * model;
-    glm::mat4 mvp = m_Proj * modelview;
-    shader.SetUniformMat4f("u_MVP", mvp);
+    //glm::mat4 modelview = m_View * model;
+    //glm::mat4 mvp = m_Proj * modelview;
+    //shader.SetUniformMat4f("u_MVP", mvp);
 }
 
 void Camera::MoveEye()
