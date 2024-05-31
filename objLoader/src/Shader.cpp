@@ -17,7 +17,7 @@ void Shader::Unbind() const
     glUseProgram(0);
 }
 
-void Shader::SetUniformMat4f(const std::string &variable, const glm::mat4 &matrix)
+void Shader::SetUniformMat4f(const std::string &variable, const glm::mat4 &matrix) const
 {
     int location = GetLocation(variable);
     if (location >= 0)
@@ -96,7 +96,7 @@ unsigned int Shader::CompileShader(const std::string& source, unsigned int type)
     return id;
 }
 
-int Shader::GetLocation(const std::string& variable)
+int Shader::GetLocation(const std::string& variable) const
 {
     return glGetUniformLocation(m_RendererID, variable.c_str());
 }

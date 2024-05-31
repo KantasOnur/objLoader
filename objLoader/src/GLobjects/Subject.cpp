@@ -6,8 +6,7 @@
 #include "VertexArray.hpp"
 #include "IndexBuffer.hpp"
 
-Subject::Subject(const Shader& shader)
-    : shader_(shader)
+Subject::Subject()
 {
     va_ = new GLobjects::VertexArray();
     vb_ = new GLobjects::VertexBuffer(data_);
@@ -31,13 +30,13 @@ Subject::~Subject()
     ib_ = nullptr;
 }
 
-void Subject::setMV(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
+void Subject::setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
     glm::mat4 mvp = projMatrix * viewMatrix * modelMatrix_;
-    shader_.SetUniformMat4f("u_MVP", mvp);
+    shader.SetUniformMat4f("u_MVP", mvp);
 }
 
-void Subject::draw(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
+void Subject::draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
 
     models_.push(modelMatrix_);
@@ -48,7 +47,7 @@ void Subject::draw(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
     }
     translates_.clear();
     
-    setMV(viewMatrix, projMatrix);
+    setMV(shader, viewMatrix, projMatrix);
 
     va_->bind();
     glDrawElements(GL_TRIANGLES, (int)indices_.size(), GL_UNSIGNED_INT, nullptr);

@@ -28,10 +28,10 @@ public:
     void Bind() const;
     void Unbind() const;
     
-    void SetUniformMat4f(const std::string& variable, const glm::mat4& matrix);
+    void SetUniformMat4f(const std::string& variable, const glm::mat4& matrix) const;
     
     ShaderProgramSource ReadShader(std::string& vertLocation, std::string& fragLocation);
     int CreateShader(const std::string& vert, const std::string& frag);
     unsigned int CompileShader(const std::string& source, unsigned int type);
-    int GetLocation(const std::string& variable);
+    int GetLocation(const std::string& variable) const;
 };

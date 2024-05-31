@@ -34,7 +34,6 @@ private:
     GLobjects::VertexBuffer* vb_;
     GLobjects::VertexArray* va_;
     GLobjects::IndexBuffer* ib_;
-    Shader shader_;
     
     std::stack<glm::mat4> models_;
     std::vector<glm::vec3> translates_;
@@ -45,15 +44,15 @@ public:
     Subject* nextHiearchy;
     glm::mat4 modelMatrix_ = glm::mat4(1.0f);
 public:
-    Subject(const Shader& shader);
-    Subject(const Shader& shader, const glm::mat4& modelMatrix); // for the heirchy matrix
+    Subject();
+    Subject(const glm::mat4& modelMatrix); // for the heirchy matrix
     ~Subject();
-    virtual void draw(const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
+    void draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
     void push_transform();
     void pop_transform();
     void translate(const glm::vec3& position);
 private:
-    void setMV(const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
+    void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
 };
 
 #endif /* Subject_hpp */
