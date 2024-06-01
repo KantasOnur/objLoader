@@ -14,8 +14,8 @@ namespace GLobjects {
 }
 
 struct Layout {
-    float position[3];
-    float color[4];
+    glm::vec3 position;
+    glm::vec4 color;
 };
 
 class Subject {
@@ -43,14 +43,17 @@ public:
     const unsigned int strides_[2] = {offsetof(Layout, position), offsetof(Layout, color)};
     Subject* nextHiearchy;
     glm::mat4 modelMatrix_ = glm::mat4(1.0f);
+    glm::mat4* modelPtr_ = &modelMatrix_;
 public:
     Subject();
-    Subject(const glm::mat4& modelMatrix); // for the heirchy matrix
+    Subject(Subject* parent); // for the heirchy matrix
     ~Subject();
     void draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
-    void push_transform();
+    
+    void transform(const glm::mat4& transformedMatrix);
     void pop_transform();
     void translate(const glm::vec3& position);
+    
 private:
     void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
 };

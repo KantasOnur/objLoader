@@ -16,6 +16,7 @@
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtx/transform.hpp"
 #include "glm/gtx/string_cast.hpp"
 
 
@@ -56,12 +57,12 @@ int main(void)
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     Subject* square = new Subject();
+    Subject* square2 = new Subject(square);
     shader.Bind();
     
     float prevTime = 0;
-    float movement = 0;
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
-
+    //square->transform(glm::translate(*square->modelPtr_, glm::vec3(0, 0, 2)));
     while(!glfwWindowShouldClose(window))
     {
         float currentTime = glfwGetTime();
@@ -73,9 +74,15 @@ int main(void)
         
         if(square != nullptr)
         {
-            square->draw(shader, camera.viewM_, camera.projectionM_);
-            /** TODO: - Implement a hierchy structure,
-                TODO: - Handle all types of transformations.**/
+            square->transform(glm::translate(glm::vec3(0, 0, 2)));
+            square->transform(glm::rotate(cos(currentTime), glm::vec3(0, 1, 0)));
+            square->transform(glm::translate(glm::vec3(0, 0, -2)));
+            {
+                square2->draw(shader, camera.viewM_, camera.projectionM_);
+            }
+            //square->draw(shader, camera.viewM_, camera.projectionM_);
+            
+            /** TODO: - Implement a hierchy structure **/
         }
 
         glfwSwapBuffers(window);
@@ -84,6 +91,8 @@ int main(void)
     
     delete square;
     square = nullptr;
+    delete square2;
+    square2 = nullptr;
     glfwTerminate();
     return 0;
 }

@@ -18,7 +18,18 @@ Subject::Subject()
     ib_->unbind();
 }
 
+Subject::Subject(Subject* parent)
+: modelPtr_(parent->modelPtr_)
+{
+    va_ = new GLobjects::VertexArray();
+    vb_ = new GLobjects::VertexBuffer(data_);
+    ib_ = new GLobjects::IndexBuffer(indices_);
+    va_->addBuffer(*vb_, this);
 
+    va_->unbind();
+    vb_->unbind();
+    ib_->unbind();
+}
 
 Subject::~Subject()
 {
@@ -39,26 +50,28 @@ void Subject::setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm
 void Subject::draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
 
-    models_.push(modelMatrix_);
-    for(int i = 0; i < translates_.size(); i++)
-    {
+   // models_.push(modelMatrix_);
+    //for(int i = 0; i < translates_.size(); i++)
+    //{
         //std::cout << "a" << std::endl;
-        modelMatrix_ = glm::translate(modelMatrix_, translates_[i]);
-    }
-    translates_.clear();
+      //  modelMatrix_ = glm::translate(modelMatrix_, translates_[i]);
+    //}
+    //translates_.clear();
     
+    modelMatrix_ = *modelPtr_;
     setMV(shader, viewMatrix, projMatrix);
 
     va_->bind();
     glDrawElements(GL_TRIANGLES, (int)indices_.size(), GL_UNSIGNED_INT, nullptr);
     va_->unbind();
     
-    modelMatrix_ = models_.top();
-    models_.pop();
+    modelMatrix_ = glm::mat4(1.0f);
+    //modelMatrix_ = models_.top();
+    //models_.pop();
     //shader_.Unbind();
 }
 
-void Subject::translate(const glm::vec3& position)
+void Subject::transform(const glm::mat4& transformedMatrix)
 {
-    translates_.push_back(position);
+    modelMatrix_ = transformedMatrix * (*modelPtr_);
 }
