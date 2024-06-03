@@ -95,7 +95,6 @@
 		7754791F2BFA67D800CCC13D /* objLoader */ = {
 			isa = PBXGroup;
 			children = (
-				778465A32C0636B4000875F1 /* srcrip */,
 				775479282BFA688000CCC13D /* Dependencies */,
 				775479272BFA685F00CCC13D /* src */,
 			);
@@ -152,13 +151,6 @@
 				7754794E2BFB1B8F00CCC13D /* Basic.frag */,
 			);
 			path = shaders;
-			sourceTree = "<group>";
-		};
-		778465A32C0636B4000875F1 /* srcrip */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = srcrip;
 			sourceTree = "<group>";
 		};
 		778465C42C06FE93000875F1 /* GLobjects */ = {

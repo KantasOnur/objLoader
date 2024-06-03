@@ -57,34 +57,35 @@ int main(void)
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     Subject* square = new Subject();
-    Subject* square2 = new Subject(square);
+    Subject* square2 = new Subject();
     shader.Bind();
     
     float prevTime = 0;
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
-    //square->transform(glm::translate(*square->modelPtr_, glm::vec3(0, 0, 2)));
+
     while(!glfwWindowShouldClose(window))
     {
         float currentTime = glfwGetTime();
         float dt = currentTime - prevTime;
         prevTime = currentTime;
         camera.PlaceCamera(shader, dt);
-        glClear(GL_COLOR_BUFFER_BIT);
+        
+        glEnable(GL_DEPTH_TEST);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glDepthFunc(GL_LESS);
         
         
-        if(square != nullptr)
+        // Order is T, R, S
+        square->transform(glm::translate(glm::vec3(0, 0, -2)));
+        square->transform(glm::scale(glm::vec3(0.5, 0.5, 0.5)));
         {
-            square->transform(glm::translate(glm::vec3(0, 0, 2)));
-            square->transform(glm::rotate(cos(currentTime), glm::vec3(0, 1, 0)));
-            square->transform(glm::translate(glm::vec3(0, 0, -2)));
-            {
-                square2->draw(shader, camera.viewM_, camera.projectionM_);
-            }
-            //square->draw(shader, camera.viewM_, camera.projectionM_);
-            
-            /** TODO: - Implement a hierchy structure **/
+            square2->makeChildOf(square);
+            square2->transform(glm::rotate(currentTime, glm::vec3(0, 1, 0)));
+            square2->draw(shader, camera.viewM_, camera.projectionM_);
         }
-
+        square->draw(shader, camera.viewM_, camera.projectionM_);
+       
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
