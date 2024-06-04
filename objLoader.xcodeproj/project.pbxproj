@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770913DA2C0DD62700E2113E /* Octahedron.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770913D82C0DD62700E2113E /* Octahedron.cpp */; };
+		770913DD2C0DD63400E2113E /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770913DB2C0DD63400E2113E /* Cube.cpp */; };
 		775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479442BFA70A500CCC13D /* libglfw.3.4.dylib */; };
 		775479492BFA711500CCC13D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479392BFA6FA800CCC13D /* OpenGL.framework */; };
 		7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */; };
@@ -35,6 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		770913D82C0DD62700E2113E /* Octahedron.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Octahedron.cpp; sourceTree = "<group>"; };
+		770913D92C0DD62700E2113E /* Octahedron.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Octahedron.hpp; sourceTree = "<group>"; };
+		770913DB2C0DD63400E2113E /* Cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		770913DC2C0DD63400E2113E /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
 		7754791D2BFA67D800CCC13D /* objLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = objLoader; sourceTree = BUILT_PRODUCTS_DIR; };
 		775479202BFA67D800CCC13D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp; sourceTree = "<absolute>"; };
 		7754792C2BFA693900CCC13D /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLFW; path = /Users/onur/Desktop/playground/objLoader/objLoader/Dependencies/include/GLFW; sourceTree = "<absolute>"; };
@@ -75,6 +81,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770913D72C0DD57800E2113E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				770913D82C0DD62700E2113E /* Octahedron.cpp */,
+				770913D92C0DD62700E2113E /* Octahedron.hpp */,
+				770913DB2C0DD63400E2113E /* Cube.cpp */,
+				770913DC2C0DD63400E2113E /* Cube.hpp */,
+				778465CA2C06FFF7000875F1 /* Subject.hpp */,
+				778465C92C06FFF7000875F1 /* Subject.cpp */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		775479142BFA67D800CCC13D = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +123,7 @@
 		775479272BFA685F00CCC13D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				770913D72C0DD57800E2113E /* Objects */,
 				778465C42C06FE93000875F1 /* GLobjects */,
 				77C6A8732BFD16C1003AFBEF /* vendors */,
 				7754794C2BFB1B5F00CCC13D /* shaders */,
@@ -156,8 +176,6 @@
 		778465C42C06FE93000875F1 /* GLobjects */ = {
 			isa = PBXGroup;
 			children = (
-				778465CA2C06FFF7000875F1 /* Subject.hpp */,
-				778465C92C06FFF7000875F1 /* Subject.cpp */,
 				778465CC2C0700B5000875F1 /* VertexBuffer.cpp */,
 				778465CD2C0700B5000875F1 /* VertexBuffer.hpp */,
 				778465C52C06FEAF000875F1 /* IndexBuffer.cpp */,
@@ -239,8 +257,10 @@
 				778465B62C06541C000875F1 /* Shader.cpp in Sources */,
 				778465CE2C0700B5000875F1 /* VertexBuffer.cpp in Sources */,
 				778465B72C06541C000875F1 /* Shader.hpp in Sources */,
+				770913DD2C0DD63400E2113E /* Cube.cpp in Sources */,
 				778465C72C06FEAF000875F1 /* IndexBuffer.cpp in Sources */,
 				778465D12C077BE2000875F1 /* VertexArray.cpp in Sources */,
+				770913DA2C0DD62700E2113E /* Octahedron.cpp in Sources */,
 				778465CB2C06FFF7000875F1 /* Subject.cpp in Sources */,
 				778465BF2C06541C000875F1 /* Camera.hpp in Sources */,
 				778465C02C06541C000875F1 /* Camera.cpp in Sources */,

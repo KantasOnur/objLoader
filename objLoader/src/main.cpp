@@ -13,12 +13,14 @@
 #include "Shader.hpp"
 #include "Camera.hpp"
 #include "Subject.hpp"
-
+#include "Cube.hpp"
+#include "Octahedron.hpp"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/transform.hpp"
 #include "glm/gtx/string_cast.hpp"
 
+using namespace glm;
 
 int main(void)
 {
@@ -56,8 +58,10 @@ int main(void)
     }
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
-    Subject* square = new Subject();
-    Subject* square2 = new Subject();
+    Cube cube;
+    Octahedron octahedron;
+    std::vector<unsigned int> rip;
+    octahedron.subdivide(rip, 4);
     shader.Bind();
     
     float prevTime = 0;
@@ -74,26 +78,22 @@ int main(void)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glDepthFunc(GL_LESS);
         
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
         
         // Order is T, R, S
-        square->transform(glm::translate(glm::vec3(0, 0, -2)));
-        square->transform(glm::scale(glm::vec3(0.5, 0.5, 0.5)));
-        {
-            square2->makeChildOf(square);
-            square2->transform(glm::rotate(currentTime, glm::vec3(0, 1, 0)));
-            square2->draw(shader, camera.viewM_, camera.projectionM_);
-        }
-        square->draw(shader, camera.viewM_, camera.projectionM_);
-       
+        /*
+        cube.transform(translate(vec3(0, 0, -2)));
+        cube.transform(scale(vec3(0.5, 0.5, 0.5)));
+        cube.draw(shader, camera.viewM_, camera.projectionM_);
+       */
+        octahedron.transform(translate(vec3(0, 0, -2)));
+        octahedron.draw(shader, camera.viewM_, camera.projectionM_);
         
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     
-    delete square;
-    square = nullptr;
-    delete square2;
-    square2 = nullptr;
     glfwTerminate();
     return 0;
 }

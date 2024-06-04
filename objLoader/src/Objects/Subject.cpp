@@ -1,3 +1,4 @@
+#define GLM_ENABLE_EXPERIMENTAL
 #include "Subject.hpp"
 #include <GL/glew.h>
 #include <iostream>
@@ -5,11 +6,9 @@
 #include "VertexBuffer.hpp"
 #include "VertexArray.hpp"
 #include "IndexBuffer.hpp"
-
-Subject::Subject()
+#include "glm/gtx/string_cast.hpp"
+void Subject::bindBuffers()
 {
-    
-    
     va_ = new GLobjects::VertexArray();
     vb_ = new GLobjects::VertexBuffer(data_);
     ib_ = new GLobjects::IndexBuffer(indices_);
@@ -54,4 +53,30 @@ void Subject::transform(const glm::mat4 &transformationMatrix)
 void Subject::makeChildOf(const Subject *subject)
 {
     modelMatrix_ = subject->modelMatrix_;
+}
+
+void Subject::updateVertices()
+{
+    /*
+    for(int i = 0; i < data_.size(); i++)
+    {
+        std::cout << glm::to_string(data_.data()[i].position) << std::endl;
+    }
+    
+    for(int i = 0; i < indices_.size(); i++)
+    {
+        std::cout << indices_[i] << std::endl;
+    }
+    */
+    
+    vb_->bind();
+    ib_->bind();
+
+    glBufferData(GL_ARRAY_BUFFER, data_.size() * sizeof(Layout), data_.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_.size() * sizeof(unsigned int), indices_.data(), GL_STATIC_DRAW);
+    
+    vb_->unbind();
+    ib_->unbind();
+     
+
 }

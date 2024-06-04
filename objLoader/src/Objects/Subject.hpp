@@ -18,37 +18,35 @@ struct Layout {
     glm::vec4 color;
 };
 
+struct SubjectInfo
+{
+    std::vector<Layout> data;
+    std::vector<unsigned int> indices;
+};
+
 class Subject {
 protected:
-    std::vector<Layout> data_ = {
-        {{-0.5f, -0.5f, 0.0f}, {1.0, 0.0, 0.0, 1.0}},
-        {{0.5f, -0.5f, 0.0f}, {0.0, 1.0, 0.0, 1.0}},
-        {{0.5f, 0.5f, 0.0f}, {0.0, 0.0, 1.0, 1.0}},
-        {{-0.5f, 0.5f, 0.0f}, {1.0, 0.0, 0.0, 1.0}}
-    };
-    std::vector<unsigned int> indices_ = {
-        0, 1, 2,
-        2, 3, 0
-    };
+    std::vector<Layout> data_;
+    std::vector<unsigned int> indices_;
+    void updateVertices();
 private:
     GLobjects::VertexBuffer* vb_;
     GLobjects::VertexArray* va_;
     GLobjects::IndexBuffer* ib_;
     glm::mat4 modelMatrix_ = glm::mat4(1.0f);
-public:
-    const unsigned int counts_[2] = {3, 4};
-    const unsigned int strides_[2] = {offsetof(Layout, position), offsetof(Layout, color)};
-public:
-    Subject();
-    ~Subject();
     
+    void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
+
+public:
+    const unsigned int counts_[2] = {Layout().position.length(), Layout().color.length()};
+    const unsigned int strides_[2] = {offsetof(Layout, position), offsetof(Layout, color)};
+
+    ~Subject();
+    void bindBuffers();
     void transform(const glm::mat4& transformationMatrix);
     void makeChildOf(const Subject* subject);
     void draw(const Shader& shader, const glm::mat4& viewM, const glm::mat4& projectionM);
-    
-private:
-    void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
-};
+    };
 
 #endif /* Subject_hpp */
 
