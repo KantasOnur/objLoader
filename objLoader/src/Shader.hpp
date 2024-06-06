@@ -29,6 +29,7 @@ public:
     void Unbind() const;
     
     void SetUniformMat4f(const std::string& variable, const glm::mat4& matrix) const;
+    void SetUniformVec3f(const std::string& variable, const glm::vec3& vector) const;
     
     ShaderProgramSource ReadShader(std::string& vertLocation, std::string& fragLocation);
     int CreateShader(const std::string& vert, const std::string& frag);

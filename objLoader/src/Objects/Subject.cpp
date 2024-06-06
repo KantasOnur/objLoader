@@ -31,12 +31,15 @@ Subject::~Subject()
 
 void Subject::setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
-    glm::mat4 mvp = projMatrix * viewMatrix * modelMatrix_;
-    shader.SetUniformMat4f("u_MVP", mvp);
+    shader.SetUniformMat4f("u_ModelMatrix", modelMatrix_);
+    shader.SetUniformMat4f("u_ViewMatrix", viewMatrix);
+    shader.SetUniformMat4f("u_ProjectionMatrix", projMatrix);
 }
 
 void Subject::draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
+    shader.Bind();
+    
     setMV(shader, viewMatrix, projMatrix);
 
     va_->bind();
@@ -44,6 +47,15 @@ void Subject::draw(const Shader& shader, const glm::mat4& viewMatrix, const glm:
     va_->unbind();
     
     modelMatrix_ = glm::mat4(1.0f);
+}
+
+void Subject::setColor(const glm::vec4& color)
+{
+    for(auto& vertex : data_)
+    {
+        vertex.color = color;
+    }
+    updateVertices();
 }
 
 void Subject::transform(const glm::mat4 &transformationMatrix)

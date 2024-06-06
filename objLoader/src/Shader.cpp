@@ -22,12 +22,21 @@ void Shader::SetUniformMat4f(const std::string &variable, const glm::mat4 &matri
     int location = GetLocation(variable);
     if (location >= 0)
     {
-        glUniformMatrix4fv(GetLocation(variable), 1, GL_FALSE, &matrix[0][0]);
+        glUniformMatrix4fv(location, 1, GL_FALSE, &matrix[0][0]);
     }
     else
-        std::cout << "Could not find position" << std::endl;
+        std::cout << "Could not find position: " <<  variable << std::endl;
 }
-
+void Shader::SetUniformVec3f(const std::string& variable, const glm::vec3& vector) const
+{
+    int location = GetLocation(variable);
+    if (location >= 0)
+    {
+        glUniform3fv(location, 1, &vector[0]);
+    }
+    else
+        std::cout << "Could not find position: " << variable << std::endl;
+}
 Shader::~Shader()
 {
     glDeleteProgram(m_RendererID);

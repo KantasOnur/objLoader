@@ -20,7 +20,7 @@ void GLobjects::VertexArray::unbind() const {
 
 void GLobjects::VertexArray::addBuffer(const VertexBuffer& vb, const Subject* subject) const {
     vb.bind();
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < subject->layoutSize_; i++) {
         const auto& offset = subject->strides_[i];
         glEnableVertexAttribArray(i);
         glVertexAttribPointer(i, subject->counts_[i], GL_FLOAT, GL_FALSE, sizeof(Layout), (void*)offset);

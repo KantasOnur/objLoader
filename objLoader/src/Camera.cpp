@@ -14,8 +14,9 @@ void Camera::PlaceCamera(const Shader& shader, const float& dt)
     dt_ = dt;
     Inputs();
     viewM_ = glm::lookAt(eye_, eye_ + at_, up_);
-    glm::mat4 mvp = projectionM_ * viewM_;
-    shader.SetUniformMat4f("u_MVP", mvp);
+    shader.SetUniformVec3f("u_EyePos", eye_);
+    //glm::mat4 mvp = projectionM_ * viewM_;
+    //shader.SetUniformMat4f("u_MVP", mvp);
 }
 
 void Camera::Inputs()

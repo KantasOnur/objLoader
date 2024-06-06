@@ -16,6 +16,8 @@ namespace GLobjects {
 struct Layout {
     glm::vec3 position;
     glm::vec4 color;
+    glm::vec3 normal;
+
 };
 
 struct SubjectInfo
@@ -38,14 +40,16 @@ private:
     void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
 
 public:
-    const unsigned int counts_[2] = {Layout().position.length(), Layout().color.length()};
-    const unsigned int strides_[2] = {offsetof(Layout, position), offsetof(Layout, color)};
-
+    static const unsigned int layoutSize_ = 3;
+    const unsigned int counts_[layoutSize_] = {Layout().position.length(), Layout().color.length(), Layout().normal.length()};
+    const unsigned int strides_[layoutSize_] = {offsetof(Layout, position), offsetof(Layout, color), offsetof(Layout, normal)};
+    
     ~Subject();
     void bindBuffers();
     void transform(const glm::mat4& transformationMatrix);
     void makeChildOf(const Subject* subject);
     void draw(const Shader& shader, const glm::mat4& viewM, const glm::mat4& projectionM);
+    void setColor(const glm::vec4& color);
     };
 
 #endif /* Subject_hpp */

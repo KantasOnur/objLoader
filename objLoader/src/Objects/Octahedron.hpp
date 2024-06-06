@@ -8,9 +8,10 @@
 class Octahedron : public Subject
 {
 public:
+    
     std::vector<Layout> octahedronData_ =
     {
-        
+        /*
         {{0, 1.0, 0}, {1.0, 0.0, 0.0, 1.0}},
         {{-0.5/sqrt(0.5), 0, 0.5/sqrt(0.5)}, {0.0, 1.0, 0.0, 1.0}},
         {{0.5/sqrt(0.5), 0, 0.5/sqrt(0.5)}, {0.0, 0.0, 1.0, 1.0}},
@@ -18,7 +19,8 @@ public:
         {{0.5/sqrt(0.5), 0, -0.5/sqrt(0.5)}, {1.0, 1.0, 0.0, 1.0}},
         {{-0.5/sqrt(0.5), 0, -0.5/sqrt(0.5)}, {0.5, 1.0, 0.0, 1.0}},
         {{0, -1.0 , 0}, {0.5, 1.0, 0.5, 1.0}}
-         
+         */
+        
         /*
         {{0.0, 1.0, 0.0}, {0.0, 0.0, 0.0, 0.0}},
         {{-1.0, 0.0, 0.0}, {0.0, 0.0, 0.0, 0.0}},
@@ -28,7 +30,7 @@ public:
     
     std::vector<unsigned int> octahedronIndices_
     {
-        
+        /*
         // Top half
         0, 1, 2,
         0, 2, 3,
@@ -40,7 +42,7 @@ public:
         5, 2, 3,
         5, 3, 4,
         5, 1, 4
-        
+        */
     };
     
     SubjectInfo info_ = {octahedronData_, octahedronIndices_};

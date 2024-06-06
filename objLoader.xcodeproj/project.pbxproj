@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		770913DA2C0DD62700E2113E /* Octahedron.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770913D82C0DD62700E2113E /* Octahedron.cpp */; };
 		770913DD2C0DD63400E2113E /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770913DB2C0DD63400E2113E /* Cube.cpp */; };
+		7737C0062C11F78E002E5272 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7737C0042C11F78E002E5272 /* Light.cpp */; };
+		7737C00B2C1217D6002E5272 /* Lamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7737C0092C1217D6002E5272 /* Lamp.cpp */; };
 		775479472BFA70A500CCC13D /* libglfw.3.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479442BFA70A500CCC13D /* libglfw.3.4.dylib */; };
 		775479492BFA711500CCC13D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775479392BFA6FA800CCC13D /* OpenGL.framework */; };
 		7754794B2BFA734900CCC13D /* libGLEW.2.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7754794A2BFA734900CCC13D /* libGLEW.2.2.0.dylib */; };
@@ -41,6 +43,12 @@
 		770913D92C0DD62700E2113E /* Octahedron.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Octahedron.hpp; sourceTree = "<group>"; };
 		770913DB2C0DD63400E2113E /* Cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		770913DC2C0DD63400E2113E /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
+		7737C0042C11F78E002E5272 /* Light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		7737C0052C11F78E002E5272 /* Light.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
+		7737C0072C121457002E5272 /* Lamp.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Lamp.vert; sourceTree = "<group>"; };
+		7737C0082C121465002E5272 /* Lamp.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Lamp.frag; sourceTree = "<group>"; };
+		7737C0092C1217D6002E5272 /* Lamp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lamp.cpp; sourceTree = "<group>"; };
+		7737C00A2C1217D6002E5272 /* Lamp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lamp.hpp; sourceTree = "<group>"; };
 		7754791D2BFA67D800CCC13D /* objLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = objLoader; sourceTree = BUILT_PRODUCTS_DIR; };
 		775479202BFA67D800CCC13D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp; sourceTree = "<absolute>"; };
 		7754792C2BFA693900CCC13D /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLFW; path = /Users/onur/Desktop/playground/objLoader/objLoader/Dependencies/include/GLFW; sourceTree = "<absolute>"; };
@@ -128,10 +136,14 @@
 				77C6A8732BFD16C1003AFBEF /* vendors */,
 				7754794C2BFB1B5F00CCC13D /* shaders */,
 				775479202BFA67D800CCC13D /* main.cpp */,
+				7737C0092C1217D6002E5272 /* Lamp.cpp */,
+				7737C00A2C1217D6002E5272 /* Lamp.hpp */,
 				77C6A8592BFB8AEF003AFBEF /* Shader.cpp */,
 				77C6A85A2BFB8AEF003AFBEF /* Shader.hpp */,
 				77C6A87C2BFFB725003AFBEF /* Camera.hpp */,
 				77C6A87D2BFFB91C003AFBEF /* Camera.cpp */,
+				7737C0042C11F78E002E5272 /* Light.cpp */,
+				7737C0052C11F78E002E5272 /* Light.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -169,6 +181,8 @@
 			children = (
 				7754794D2BFB1B7700CCC13D /* Basic.vert */,
 				7754794E2BFB1B8F00CCC13D /* Basic.frag */,
+				7737C0072C121457002E5272 /* Lamp.vert */,
+				7737C0082C121465002E5272 /* Lamp.frag */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -259,10 +273,12 @@
 				778465B72C06541C000875F1 /* Shader.hpp in Sources */,
 				770913DD2C0DD63400E2113E /* Cube.cpp in Sources */,
 				778465C72C06FEAF000875F1 /* IndexBuffer.cpp in Sources */,
+				7737C0062C11F78E002E5272 /* Light.cpp in Sources */,
 				778465D12C077BE2000875F1 /* VertexArray.cpp in Sources */,
 				770913DA2C0DD62700E2113E /* Octahedron.cpp in Sources */,
 				778465CB2C06FFF7000875F1 /* Subject.cpp in Sources */,
 				778465BF2C06541C000875F1 /* Camera.hpp in Sources */,
+				7737C00B2C1217D6002E5272 /* Lamp.cpp in Sources */,
 				778465C02C06541C000875F1 /* Camera.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
