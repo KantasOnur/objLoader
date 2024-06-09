@@ -8,8 +8,6 @@
 #include <SDL2/SDL.h>
 #include <GLFW/glfw3.h>
 
-static void lookAround(GLFWwindow* window, float xpos, float ypos);
-
 class Camera
 {
 private:
@@ -35,7 +33,4 @@ public:
     glm::vec3 getCameraPos() {return eye_;}
 private:
     void Inputs();
-    //void MoveEye();
-    //void EyeLookAround(float& yaw, float& pitch) {m_Yaw += yaw; m_Pitch += pitch;}
-    //void mouse_callback(GLFWwindow *window, float xpos, float ypos);
 };

@@ -27,10 +27,14 @@ struct SubjectInfo
 };
 
 class Subject {
+
 protected:
     std::vector<Layout> data_;
     std::vector<unsigned int> indices_;
+    
     void updateVertices();
+    void bindBuffers();
+    
 private:
     GLobjects::VertexBuffer* vb_;
     GLobjects::VertexArray* va_;
@@ -45,7 +49,6 @@ public:
     const unsigned int strides_[layoutSize_] = {offsetof(Layout, position), offsetof(Layout, color), offsetof(Layout, normal)};
     
     ~Subject();
-    void bindBuffers();
     void transform(const glm::mat4& transformationMatrix);
     void makeChildOf(const Subject* subject);
     void draw(const Shader& shader, const glm::mat4& viewM, const glm::mat4& projectionM);

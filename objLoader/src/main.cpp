@@ -14,13 +14,17 @@
 #include "Camera.hpp"
 #include "Subject.hpp"
 #include "Cube.hpp"
-#include "Octahedron.hpp"
 #include "Light.hpp"
+#include "Event.hpp"
+#include "EventHandler.h"
+#include "EventManager.hpp"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/transform.hpp"
 #include "glm/gtx/string_cast.hpp"
+
+#include "EventManager.hpp"
 
 using namespace glm;
 
@@ -65,18 +69,16 @@ int main(void)
     Cube cube;
     Cube lamp;
     
-    //Octahedron octahedron;
-    std::vector<unsigned int> rip;
-    //octahedron.subdivide(rip, 4);
-    //shader.Bind();
-    //lampShader.Bind();
-    
     float prevTime = 0;
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
     Light light(vec3(1.0f, 1.0f, 1.0f));
     
+    EventManager manager;
+    
     while(!glfwWindowShouldClose(window))
     {
+        manager.dispatch();
+        
         float currentTime = glfwGetTime();
         float dt = currentTime - prevTime;
         prevTime = currentTime;
@@ -89,33 +91,17 @@ int main(void)
         
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         
-        //light.place(shader, );
-        //light.place(shader, translate(vec3(1, 0, 0)) * vec4(light.position_, 1.0f));
-        /*
-        lamp.transform(rotate(currentTime, vec3(0, 1, 0)));
-        lamp.transform(translate(vec3(1, 0, 0)));
-        lamp.transform(scale(vec3(0.25, 0.25, 0.25)));
-        lamp.draw(lampShader, camera.viewM_, camera.projectionM_);
-        */
-        
         light.transform(rotate(currentTime, vec3(0, 1, 0)));
         light.transform(translate(vec3(1, 0, 0)));
         light.transform(scale(vec3(0.10, 0.10, 0.10)));
         light.illuminate(lampShader, shader, camera);
         
         // Order is T, R, S
-        
-        
         cube.setColor(vec4(1.0f, 0.5f, 0.5f, 1.0f));
         cube.transform(translate(vec3(0, 0, 0)));
-        //cube.transform(rotate(currentTime, vec3(1, 0, 0)));
         cube.transform(scale(vec3(0.5, 0.5, 0.5)));
         cube.draw(shader, camera.viewM_, camera.projectionM_);
-         
-        /*
-        octahedron.transform(translate(vec3(0, 0, -2)));
-        octahedron.draw(shader, camera.viewM_, camera.projectionM_);
-        */
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
