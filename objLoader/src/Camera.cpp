@@ -1,10 +1,23 @@
 #include "Camera.hpp"
 #include<glm/gtx/rotate_vector.hpp>
 #include<glm/gtx/vector_angle.hpp>
+#include "EventManager.hpp"
 
 Camera::Camera(GLFWwindow* window, const float& fov, const float& aspect, const float& near, const float& far)
-: window_(window)
+: window_(window), handler_([this] (const MouseClickEvent& event) {onMouseClickEvent(event);})
 {
+    
+    std::unique_ptr<EventHandlerWrapper<MouseClickEvent>> handler = std::make_unique<EventHandlerWrapper<MouseClickEvent>>(handler_);
+    
+    EventManager::getInstance().sub(std::move(handler));
+
+    /*
+    EventHandler handler;
+    EventManager::getInstance().sub(EventTypeIndex::MouseClick, handler);
+*/
+    //EventHandlerWrapper<MouseClickEvent>(handler_);
+    //EventManager::getInstance().sub(EventHandlerWrapper<MouseClickEvent>(handler_));
+    
     projectionM_ = glm::perspective(glm::radians(fov), aspect, near, far);
 }
 
@@ -58,6 +71,9 @@ void Camera::Inputs()
         {
             glfwSetCursorPos(window_, (640 / 2), (480 / 2));
             initalClick = true;
+            
+            MouseClickEvent event(0, 0, 1);
+            EventManager::getInstance().triggerEvent(event);
         }
     }
     
@@ -93,3 +109,7 @@ void Camera::Inputs()
     }
 }
 
+void Camera::onMouseClickEvent(const MouseClickEvent &event)
+{
+    std::cout << event.button_ << std::endl;
+}

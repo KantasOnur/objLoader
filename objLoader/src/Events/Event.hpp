@@ -4,25 +4,23 @@
 #include <stdio.h>
 #include <glm/glm.hpp>
 
-using namespace glm;
-
 enum EventTypeIndex
 {
     None, 
-    KeyPressEvent, KeyReleaseEvent,
-    MouseMoveEvent, MouseClickEvent
+    KeyPress, KeyRelease,
+    MouseMove, MouseClick
 };
 
-#define DEFINE_EVENT_TYPE(type)                                                           \
-        static EventTypeIndex getStaticType() {return EventTypeIndex::type;}              \
-        EventTypeIndex const getEventType() const override {return getStaticType();}      \
+#define DEFINE_EVENT_TYPE(type)                                                                     \
+        static EventTypeIndex getStaticEventType() {return EventTypeIndex::type;}                   \
+        EventTypeIndex const getEventType() const override {return getStaticEventType();}           \
 
 
 class Event
 {
 public:
     virtual const EventTypeIndex getEventType() const {return EventTypeIndex::None;}
-    static const EventTypeIndex getStaticEventType() {return EventTypeIndex::None;}
+    //static const EventTypeIndex getStaticEventType() {return EventTypeIndex::None;}
     bool handled = false;
 };
 
@@ -31,7 +29,7 @@ class KeyPressEvent : public Event
 {
 public:
     
-    DEFINE_EVENT_TYPE(KeyPressEvent)
+    DEFINE_EVENT_TYPE(KeyPress)
 
     int key_;
     KeyPressEvent(int key) : key_(key) {};
@@ -41,7 +39,7 @@ class KeyReleaseEvent : public Event
 {
 public:
     
-    DEFINE_EVENT_TYPE(KeyReleaseEvent)
+    DEFINE_EVENT_TYPE(KeyRelease)
     
     int key_;
     KeyReleaseEvent(int key) : key_(key) {};
@@ -54,7 +52,7 @@ class MouseMoveEvent : public Event
 {
 public:
     
-    DEFINE_EVENT_TYPE(MouseMoveEvent)
+    DEFINE_EVENT_TYPE(MouseMove)
     
     int x_, y_;
     MouseMoveEvent(int x, int y) : x_(x), y_(y) {};
@@ -64,7 +62,7 @@ class MouseClickEvent : public Event
 {
 public:
     
-    DEFINE_EVENT_TYPE(MouseClickEvent)
+    DEFINE_EVENT_TYPE(MouseClick)
     
     int x_, y_, button_;
     MouseClickEvent(int x, int y, int button) : x_(x), y_(y), button_(button) {};

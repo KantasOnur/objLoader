@@ -1,5 +1,6 @@
 #pragma once
 #define GLM_ENABLE_EXPERIMENTAL
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/string_cast.hpp"
@@ -7,6 +8,9 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <GLFW/glfw3.h>
+#include "Event.hpp"
+
+#include "EventManager.hpp"
 
 class Camera
 {
@@ -21,8 +25,10 @@ private:
     float mouseSensetivity_ = 10.0f;
     GLFWwindow* window_;
     float dt_;
-    
     bool initalClick = false;
+    
+    EventHandler<MouseClickEvent> handler_;
+    
 public:
     glm::mat4 viewM_;
     glm::mat4 projectionM_;
@@ -33,4 +39,5 @@ public:
     glm::vec3 getCameraPos() {return eye_;}
 private:
     void Inputs();
+    void onMouseClickEvent(const MouseClickEvent& event);
 };

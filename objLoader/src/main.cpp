@@ -16,7 +16,6 @@
 #include "Cube.hpp"
 #include "Light.hpp"
 #include "Event.hpp"
-#include "EventHandler.h"
 #include "EventManager.hpp"
 
 #include "glm/glm.hpp"
@@ -73,11 +72,11 @@ int main(void)
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
     Light light(vec3(1.0f, 1.0f, 1.0f));
     
-    EventManager manager;
+    //EventManager manager;
     
     while(!glfwWindowShouldClose(window))
     {
-        manager.dispatch();
+        //manager.dispatch();
         
         float currentTime = glfwGetTime();
         float dt = currentTime - prevTime;

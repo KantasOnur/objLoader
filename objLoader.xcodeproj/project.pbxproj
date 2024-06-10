@@ -50,7 +50,6 @@
 		7737C00E2C141D1C002E5272 /* Event.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Event.hpp; sourceTree = "<group>"; };
 		7737C0182C14A3B2002E5272 /* EventManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
 		7737C0192C14A3B2002E5272 /* EventManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventManager.hpp; sourceTree = "<group>"; };
-		7737C01B2C14AEE0002E5272 /* EventHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventHandler.h; sourceTree = "<group>"; };
 		7754791D2BFA67D800CCC13D /* objLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = objLoader; sourceTree = BUILT_PRODUCTS_DIR; };
 		775479202BFA67D800CCC13D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = /Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp; sourceTree = "<absolute>"; };
 		7754792C2BFA693900CCC13D /* GLFW */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLFW; path = /Users/onur/Desktop/playground/objLoader/objLoader/Dependencies/include/GLFW; sourceTree = "<absolute>"; };
@@ -107,7 +106,6 @@
 			children = (
 				7737C00E2C141D1C002E5272 /* Event.hpp */,
 				7737C0182C14A3B2002E5272 /* EventManager.cpp */,
-				7737C01B2C14AEE0002E5272 /* EventHandler.h */,
 				7737C0192C14A3B2002E5272 /* EventManager.hpp */,
 			);
 			path = Events;
