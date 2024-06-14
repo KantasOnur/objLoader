@@ -26,5 +26,5 @@ void main()
     vec3 reflectDir = reflect(-lightDir, normal);
     vec3 specular = specularStrength * pow(max(dot(viewDir, reflectDir), 0.0), 32) * u_LightColor;
     
-    color = vec4((specular + ambient + diffuse), 1.0f) * vColor; // color the pixel the color recieved from the previous stage
+    color = vColor;// vec4((specular + ambient + diffuse), 1.0f) * vColor; // color the pixel the color recieved from the previous stage
 }

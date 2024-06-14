@@ -1,6 +1,6 @@
 #include "Cube.hpp"
 
-Cube::Cube()
+Cube::Cube(const Shader& shader) : Subject(shader)
 {
     data_ = {
         // Front face
@@ -60,5 +60,7 @@ Cube::Cube()
         20, 21, 22, 22, 23, 20
     };
     
-    bindBuffers();
+    shader_ = shader;
+
 }
+

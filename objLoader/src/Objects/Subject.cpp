@@ -7,6 +7,13 @@
 #include "VertexArray.hpp"
 #include "IndexBuffer.hpp"
 #include "glm/gtx/string_cast.hpp"
+
+Subject::Subject(const Shader& shader)
+: shader_(shader)
+{
+    bindBuffers();
+}
+
 void Subject::bindBuffers()
 {
     va_ = new GLobjects::VertexArray();
@@ -21,6 +28,7 @@ void Subject::bindBuffers()
 
 Subject::~Subject()
 {
+    std::cout << "im free" << std::endl;
     delete va_;
     delete vb_;
     delete ib_;
@@ -36,11 +44,12 @@ void Subject::setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm
     shader.SetUniformMat4f("u_ProjectionMatrix", projMatrix);
 }
 
-void Subject::draw(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
+void Subject::draw(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
-    shader.Bind();
     
-    setMV(shader, viewMatrix, projMatrix);
+    shader_.Bind();
+    
+    setMV(shader_, viewMatrix, projMatrix);
 
     va_->bind();
     glDrawElements(GL_TRIANGLES, (int)indices_.size(), GL_UNSIGNED_INT, nullptr);

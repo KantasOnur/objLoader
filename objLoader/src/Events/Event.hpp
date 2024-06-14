@@ -8,7 +8,8 @@ enum EventTypeIndex
 {
     None, 
     KeyPress, KeyRelease,
-    MouseMove, MouseClick
+    MouseMove, MouseClick,
+    LevelEdit
 };
 
 #define DEFINE_EVENT_TYPE(type)                                                                     \
@@ -66,5 +67,15 @@ public:
     
     int x_, y_, button_;
     MouseClickEvent(int x, int y, int button) : x_(x), y_(y), button_(button) {};
+};
+
+class LevelEditorEvent: public Event
+{
+public:
+    DEFINE_EVENT_TYPE(LevelEdit)
+    
+    int x_, y_;
+    bool firstClick_;
+    LevelEditorEvent(int x, int y) : x_(x), y_(y) {};
 };
 #endif /* Event_hpp */

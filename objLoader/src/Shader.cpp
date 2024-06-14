@@ -1,10 +1,14 @@
 #include "Shader.hpp"
+#include "ShaderManager.h"
 
 Shader::Shader(const std::string& vertLocation, const std::string& fragLocation)
     : m_VertLocation(vertLocation), m_FragLocation(fragLocation)
 {
-    ShaderProgramSource shaderSource = ReadShader(m_VertLocation, m_FragLocation);
-    m_RendererID = CreateShader(shaderSource.vertexShader, shaderSource.fragmentShader);
+    location_ = std::make_pair(m_VertLocation, m_FragLocation);
+    shaderSource_ = ReadShader(m_VertLocation, m_FragLocation);
+    m_RendererID = CreateShader(shaderSource_.vertexShader, shaderSource_.fragmentShader);
+    
+    ShaderManager::getInstance().addShader(*this);
 }
 
 void Shader::Bind() const
@@ -108,4 +112,9 @@ unsigned int Shader::CompileShader(const std::string& source, unsigned int type)
 int Shader::GetLocation(const std::string& variable) const
 {
     return glGetUniformLocation(m_RendererID, variable.c_str());
+}
+
+std::string Shader::toString()
+{
+    return "Vertex Shader: " + m_VertLocation + " Fragment Shader: " + m_FragLocation;
 }

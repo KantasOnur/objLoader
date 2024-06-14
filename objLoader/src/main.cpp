@@ -14,9 +14,9 @@
 #include "Camera.hpp"
 #include "Subject.hpp"
 #include "Cube.hpp"
-#include "Light.hpp"
 #include "Event.hpp"
 #include "EventManager.hpp"
+#include "Scene.hpp"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -24,6 +24,8 @@
 #include "glm/gtx/string_cast.hpp"
 
 #include "EventManager.hpp"
+#include "ShaderManager.h"
+#include "LevelEditor.hpp"
 
 using namespace glm;
 
@@ -64,13 +66,19 @@ int main(void)
     
     Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
     Shader lampShader("shaders/Lamp.vert", "shaders/Lamp.frag");
+    LevelEditor editor;
     
-    Cube cube;
-    Cube lamp;
+    //auto cube = std::make_shared<Cube>(shader);
+    
+    //std::shared_ptr<Cube> cubeptr = cube;
+    //scene.emplace_back(cubeptr);
+    
+    //Cube lamp;
+    auto cube = std::make_shared<Cube>(shader);
+    Scene::getInstance().addSubject(cube);
     
     float prevTime = 0;
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
-    Light light(vec3(1.0f, 1.0f, 1.0f));
     
     //EventManager manager;
     
@@ -90,16 +98,13 @@ int main(void)
         
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         
-        light.transform(rotate(currentTime, vec3(0, 1, 0)));
-        light.transform(translate(vec3(1, 0, 0)));
-        light.transform(scale(vec3(0.10, 0.10, 0.10)));
-        light.illuminate(lampShader, shader, camera);
-        
         // Order is T, R, S
-        cube.setColor(vec4(1.0f, 0.5f, 0.5f, 1.0f));
-        cube.transform(translate(vec3(0, 0, 0)));
-        cube.transform(scale(vec3(0.5, 0.5, 0.5)));
-        cube.draw(shader, camera.viewM_, camera.projectionM_);
+        
+        cube->setColor(vec4(1.0f, 0.5f, 1.0f, 1.0f));
+        cube->transform(translate(vec3(0, 0, 0)));
+        cube->transform(scale(vec3(0.5, 0.5, 0.5)));
+        
+        Scene::getInstance().drawScene(camera.viewM_, camera.projectionM_);
         
         glfwSwapBuffers(window);
         glfwPollEvents();

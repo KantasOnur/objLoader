@@ -31,9 +31,11 @@ class Subject {
 protected:
     std::vector<Layout> data_;
     std::vector<unsigned int> indices_;
+    Shader shader_;
     
     void updateVertices();
     void bindBuffers();
+    
     
 private:
     GLobjects::VertexBuffer* vb_;
@@ -44,6 +46,12 @@ private:
     void setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
 
 public:
+    
+    Subject(const Shader& shader, std::vector<Layout> data, std::vector<unsigned int> indices)
+    : shader_(shader), data_(data), indices_(indices) {}
+    
+    Subject(const Shader& shader);
+
     static const unsigned int layoutSize_ = 3;
     const unsigned int counts_[layoutSize_] = {Layout().position.length(), Layout().color.length(), Layout().normal.length()};
     const unsigned int strides_[layoutSize_] = {offsetof(Layout, position), offsetof(Layout, color), offsetof(Layout, normal)};
@@ -51,7 +59,7 @@ public:
     ~Subject();
     void transform(const glm::mat4& transformationMatrix);
     void makeChildOf(const Subject* subject);
-    void draw(const Shader& shader, const glm::mat4& viewM, const glm::mat4& projectionM);
+    void draw(const glm::mat4& viewM, const glm::mat4& projectionM);
     void setColor(const glm::vec4& color);
     };
 

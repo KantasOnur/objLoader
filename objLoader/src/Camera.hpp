@@ -11,7 +11,7 @@
 #include "Event.hpp"
 
 #include "EventManager.hpp"
-
+#include "Subject.hpp"
 class Camera
 {
 private:
@@ -29,6 +29,15 @@ private:
     
     EventHandler<MouseClickEvent> handler_;
     
+    int prevTabState = GLFW_RELEASE;
+    int prevQState = GLFW_RELEASE;
+    
+    bool levelEditorMode_ = false;
+    
+    int prevClick = GLFW_RELEASE;
+    
+    int createdObject = false;
+    
 public:
     glm::mat4 viewM_;
     glm::mat4 projectionM_;
@@ -40,4 +49,5 @@ public:
 private:
     void Inputs();
     void onMouseClickEvent(const MouseClickEvent& event);
+    glm::vec3 pixelToWorld(double x, double y, int width, int height, glm::mat4 projectionMatrix, glm::mat4 viewMatrix);
 };

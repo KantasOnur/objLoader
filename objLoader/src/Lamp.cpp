@@ -1,1 +1,0 @@
-#include "Lamp.hpp"
