@@ -64,8 +64,9 @@ int main(void)
         std::cout << "failed" << std::endl;
     }
     
-    Shader shader("shaders/Basic.vert", "shaders/Basic.frag");
-    Shader lampShader("shaders/Lamp.vert", "shaders/Lamp.frag");
+    //GET_SHADER("Basic");
+    //hader lampShader("shaders/Lamp.vert", "shaders/Lamp.frag");
+    ADD_SHADER(Basic)
     LevelEditor editor;
     
     //auto cube = std::make_shared<Cube>(shader);
@@ -74,8 +75,9 @@ int main(void)
     //scene.emplace_back(cubeptr);
     
     //Cube lamp;
-    auto cube = std::make_shared<Cube>(shader);
+    auto cube = std::make_shared<Cube>(GET_SHADER(Basic));
     Scene::getInstance().addSubject(cube);
+    
     
     float prevTime = 0;
     Camera camera(window, 45.0f, 640.0f/480.0f, 0.1f, 10.0f);
@@ -90,16 +92,12 @@ int main(void)
         float dt = currentTime - prevTime;
         prevTime = currentTime;
         
-        camera.PlaceCamera(shader, dt);
+        camera.PlaceCamera(GET_SHADER(Basic), dt);
                 
         glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glDepthFunc(GL_LESS);
-        
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        
-        // Order is T, R, S
-        
+
         cube->setColor(vec4(1.0f, 0.5f, 1.0f, 1.0f));
         cube->transform(translate(vec3(0, 0, 0)));
         cube->transform(scale(vec3(0.5, 0.5, 0.5)));

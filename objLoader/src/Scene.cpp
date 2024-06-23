@@ -13,8 +13,9 @@ std::shared_ptr<Subject> Scene::getSubject(int index)
 
 void Scene::drawScene(const glm::mat4& viewM, const glm::mat4& projectionM)
 {
-    for(auto& subject : scene)
+    for(int i = 0; i < scene.size(); i++)
     {
-        subject->draw(viewM, projectionM);
+        //std::cout << scene.size() << std::endl;
+        scene[i]->draw(viewM, projectionM);
     }
 }

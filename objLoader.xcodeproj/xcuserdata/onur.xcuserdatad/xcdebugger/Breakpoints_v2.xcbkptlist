@@ -14,8 +14,8 @@
             filePath = "objLoader/src/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -23,7 +23,212 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "824413B0-E409-421D-B28E-877A2BE7546A"
+            uuid = "6C83FAEE-6BBB-46CE-8591-830772AFE547"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/LevelEditor.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "LevelEditor::onLevelEditEvent(event)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6C83FAEE-6BBB-46CE-8591-830772AFE547 - 1ccff1f0b3c7635c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelEditor::onLevelEditEvent(LevelEditorEvent const&amp;)"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/LevelEditor.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "6C83FAEE-6BBB-46CE-8591-830772AFE547 - 1ccff1f0b3c7635c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelEditor::onLevelEditEvent(LevelEditorEvent const&amp;)"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/LevelEditor.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "6C83FAEE-6BBB-46CE-8591-830772AFE547 - 1ccff1f0b3c7633f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelEditor::onLevelEditEvent(LevelEditorEvent const&amp;)"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/LevelEditor.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "6C83FAEE-6BBB-46CE-8591-830772AFE547 - 1ccff1f0b3c763bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelEditor::onLevelEditEvent(LevelEditorEvent const&amp;)"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/LevelEditor.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3B24358-DAC7-4519-8340-89E500092FD0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "main()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "E3B24358-DAC7-4519-8340-89E500092FD0 - 8f676615c55624dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "1216">
+               </Location>
+               <Location
+                  uuid = "E3B24358-DAC7-4519-8340-89E500092FD0 - 8f676615c556243d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "661DC935-DBDA-4E07-9E23-A57D5AEB284A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "main()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "661DC935-DBDA-4E07-9E23-A57D5AEB284A - 8f676615c55620dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "661DC935-DBDA-4E07-9E23-A57D5AEB284A - 8f676615c55620dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "440">
+               </Location>
+               <Location
+                  uuid = "661DC935-DBDA-4E07-9E23-A57D5AEB284A - 8f676615c5562002"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "440">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF033A90-9253-441D-AA71-D375EF5E9947"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "main()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CA0A0DB-F37C-41F6-BE7B-B0052EDDB386"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -34,6 +239,70 @@
             endingLineNumber = "67"
             landmarkName = "main()"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "854CF97F-3099-410D-9DB6-EF01E1251107"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/Objects/Subject.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "Subject::draw(viewMatrix, projMatrix)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14742495-5028-4786-9F7F-0DE558481276"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "objLoader/src/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "main()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "14742495-5028-4786-9F7F-0DE558481276 - 8f676615c556216b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "764">
+               </Location>
+               <Location
+                  uuid = "14742495-5028-4786-9F7F-0DE558481276 - 8f676615c55626a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "objLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/onur/Desktop/playground/objLoader/objLoader/src/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "932">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

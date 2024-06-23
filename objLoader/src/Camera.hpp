@@ -44,7 +44,7 @@ public:
     
     Camera(GLFWwindow* window, const float& fov, const float& aspect, const float& near, const float& far);
     
-    void PlaceCamera(const Shader& shader, const float& dt);
+    void PlaceCamera(Shader* shader, const float& dt);
     glm::vec3 getCameraPos() {return eye_;}
 private:
     void Inputs();

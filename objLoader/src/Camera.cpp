@@ -17,12 +17,12 @@ Camera::Camera(GLFWwindow* window, const float& fov, const float& aspect, const 
 }
 
 
-void Camera::PlaceCamera(const Shader& shader, const float& dt)
+void Camera::PlaceCamera(Shader* shader, const float& dt)
 {
     dt_ = dt;
     Inputs();
     viewM_ = glm::lookAt(eye_, eye_ + at_, up_);
-    shader.SetUniformVec3f("u_EyePos", eye_);
+    shader->SetUniformVec3f("u_EyePos", eye_);
 }
 
 void Camera::Inputs()
@@ -121,7 +121,7 @@ void Camera::Inputs()
     {
         double xpos, ypos;
         glfwGetCursorPos(window_, &xpos, &ypos);
-        LevelEditorEvent event(xpos, ypos);
+        LevelEditorEvent event(xpos, ypos, pixelToWorld(xpos, ypos, 640, 480, projectionM_, viewM_));
         
         if(currentClick == GLFW_PRESS && prevClick == GLFW_RELEASE)
         {

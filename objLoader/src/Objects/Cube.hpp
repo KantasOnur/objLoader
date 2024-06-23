@@ -7,7 +7,7 @@
 class Cube : public Subject
 {    
 public:
-    Cube(const Shader& shader);
+    Cube(Shader* shader);
     void setShader(const Shader& shader);
 };
 

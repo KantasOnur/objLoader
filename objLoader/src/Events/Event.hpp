@@ -75,7 +75,8 @@ public:
     DEFINE_EVENT_TYPE(LevelEdit)
     
     int x_, y_;
+    glm::vec3 worldCoords_;
     bool firstClick_;
-    LevelEditorEvent(int x, int y) : x_(x), y_(y) {};
+    LevelEditorEvent(int x, int y, glm::vec3 coords) : x_(x), y_(y), worldCoords_(coords) {};
 };
 #endif /* Event_hpp */

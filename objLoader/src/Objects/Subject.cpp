@@ -8,7 +8,7 @@
 #include "IndexBuffer.hpp"
 #include "glm/gtx/string_cast.hpp"
 
-Subject::Subject(const Shader& shader)
+Subject::Subject(Shader* shader)
 : shader_(shader)
 {
     bindBuffers();
@@ -37,21 +37,19 @@ Subject::~Subject()
     ib_ = nullptr;
 }
 
-void Subject::setMV(const Shader& shader, const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
+void Subject::setMV(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
-    shader.SetUniformMat4f("u_ModelMatrix", modelMatrix_);
-    shader.SetUniformMat4f("u_ViewMatrix", viewMatrix);
-    shader.SetUniformMat4f("u_ProjectionMatrix", projMatrix);
+    shader_->SetUniformMat4f("u_ModelMatrix", modelMatrix_);
+    shader_->SetUniformMat4f("u_ViewMatrix", viewMatrix);
+    shader_->SetUniformMat4f("u_ProjectionMatrix", projMatrix);
 }
 
 void Subject::draw(const glm::mat4& viewMatrix, const glm::mat4& projMatrix)
 {
-    
-    shader_.Bind();
-    
-    setMV(shader_, viewMatrix, projMatrix);
-
+    shader_->Bind();
+    setMV(viewMatrix, projMatrix);
     va_->bind();
+    
     glDrawElements(GL_TRIANGLES, (int)indices_.size(), GL_UNSIGNED_INT, nullptr);
     va_->unbind();
     
@@ -100,4 +98,16 @@ void Subject::updateVertices()
     ib_->unbind();
      
 
+}
+
+void Subject::updateVertex(const glm::vec3 &position, const unsigned int &index)
+{
+    Layout data = {position, glm::vec4(1.0f), glm::vec3(1.0f)}; // temperory values for testing purposes
+    data_[index] = data;
+    updateVertices();
+}
+
+glm::vec3 Subject::getVertex(const unsigned int &index)
+{
+    return data_[index].position;
 }

@@ -1,6 +1,6 @@
 #include "Cube.hpp"
 
-Cube::Cube(const Shader& shader) : Subject(shader)
+Cube::Cube(Shader* shader) : Subject(shader)
 {
     data_ = {
         // Front face
@@ -62,5 +62,6 @@ Cube::Cube(const Shader& shader) : Subject(shader)
     
     shader_ = shader;
 
+    updateVertices();
 }
 

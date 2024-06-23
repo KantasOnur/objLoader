@@ -5,6 +5,13 @@
 #include "Subject.hpp"
 #include "Event.hpp"
 #include "EventManager.hpp"
+
+class LevelSubject : public Subject
+{
+public:
+    LevelSubject(Shader* shader);
+};
+
 class LevelEditor
 {
 private:

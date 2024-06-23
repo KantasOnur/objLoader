@@ -8,7 +8,6 @@ Shader::Shader(const std::string& vertLocation, const std::string& fragLocation)
     shaderSource_ = ReadShader(m_VertLocation, m_FragLocation);
     m_RendererID = CreateShader(shaderSource_.vertexShader, shaderSource_.fragmentShader);
     
-    ShaderManager::getInstance().addShader(*this);
 }
 
 void Shader::Bind() const
@@ -43,6 +42,7 @@ void Shader::SetUniformVec3f(const std::string& variable, const glm::vec3& vecto
 }
 Shader::~Shader()
 {
+    std::cout << location_.first << " " << location_.second << std::endl;
     glDeleteProgram(m_RendererID);
 }
 
