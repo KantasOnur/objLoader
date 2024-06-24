@@ -38,6 +38,10 @@ private:
     
     int createdObject = false;
     
+    float aspect_;
+    
+    glm::mat4 perspective_;
+    glm::mat4 orthogonal_;
 public:
     glm::mat4 viewM_;
     glm::mat4 projectionM_;

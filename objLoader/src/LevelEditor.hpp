@@ -18,6 +18,7 @@ private:
     void onLevelEditEvent(const LevelEditorEvent& event);
     EventHandler<LevelEditorEvent> handler_;
     int index_;
+    glm::vec3 firstClickCoords_;
 public:
     LevelEditor();
 };

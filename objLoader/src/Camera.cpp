@@ -6,14 +6,16 @@
 #include "ShaderManager.h"
 
 Camera::Camera(GLFWwindow* window, const float& fov, const float& aspect, const float& near, const float& far)
-: window_(window), handler_([this] (const MouseClickEvent& event) {onMouseClickEvent(event);})
+: window_(window), aspect_(aspect),handler_([this] (const MouseClickEvent& event) {onMouseClickEvent(event);})
 {
     /*
     std::unique_ptr<EventHandlerWrapper<MouseClickEvent>> handler = std::make_unique<EventHandlerWrapper<MouseClickEvent>>(handler_);
     
     EventManager::getInstance().sub(std::move(handler));
      */
-    projectionM_ = glm::perspective(glm::radians(fov), aspect, near, far);
+    perspective_ = glm::perspective(glm::radians(fov), aspect, near, far);
+    orthogonal_ = glm::ortho(-aspect_, aspect_, -1.0f, 1.0f, near, far);
+    projectionM_ = perspective_;
 }
 
 
@@ -121,7 +123,7 @@ void Camera::Inputs()
     {
         double xpos, ypos;
         glfwGetCursorPos(window_, &xpos, &ypos);
-        LevelEditorEvent event(xpos, ypos, pixelToWorld(xpos, ypos, 640, 480, projectionM_, viewM_));
+        LevelEditorEvent event(xpos, ypos, eye_ + pixelToWorld(xpos, ypos, 640, 480, projectionM_, viewM_));
         
         if(currentClick == GLFW_PRESS && prevClick == GLFW_RELEASE)
         {
@@ -146,8 +148,8 @@ void Camera::Inputs()
         
         if(levelEditorMode_)
         {
+            projectionM_ = orthogonal_;
             glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-
             eye_.y += 2.0f;
             at_ = glm::vec3(0.0f, -1.0f, 0.0f);
             up_ = glm::vec3(0.0f ,0.0f, -1.0f);
@@ -155,6 +157,7 @@ void Camera::Inputs()
         }
         else
         {
+            projectionM_ = perspective_;
             eye_.y -= 2.0f;
             at_ = {0.0f, 0.0f, -1.0f};
             up_ = glm::vec3(0.0f, 1.0f, 0.0f);

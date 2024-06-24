@@ -32,8 +32,9 @@ void LevelEditor::onLevelEditEvent(const LevelEditorEvent& event)
     {
         std::cout << "new object added" << std::endl;
         std::shared_ptr<LevelSubject> subject = std::make_shared<LevelSubject>(GET_SHADER(Basic));
-        subject->updateVertex(event.worldCoords_, 0);
+        firstClickCoords_ = event.worldCoords_;
         
+        subject->updateVertex(glm::vec3(event.worldCoords_.x, 0.0f, event.worldCoords_.z), 0);
         index_ = Scene::getInstance().addSubject(subject);
     }
     else
@@ -41,12 +42,15 @@ void LevelEditor::onLevelEditEvent(const LevelEditorEvent& event)
         std::cout << index_ << std::endl;
         auto subjectPtr = Scene::getInstance().getSubject(index_);
         
-        glm::vec3 p1 = subjectPtr->getVertex(0) + glm::vec3(0.0f, 0.0f, event.worldCoords_.z);
-        glm::vec3 p2 = subjectPtr->getVertex(0) + glm::vec3(event.worldCoords_.x, 0.0f, 0.0f);
-        glm::vec3 p3 = subjectPtr->getVertex(0) + glm::vec3(event.worldCoords_.x, 0.0f, event.worldCoords_.z);
-        
-        subjectPtr->updateVertex(p1, 1);
-        subjectPtr->updateVertex(p2, 2);
-        subjectPtr->updateVertex(p3, 3);
+        if(firstClickCoords_ != event.worldCoords_)
+        {
+            glm::vec3 p1 = glm::vec3(firstClickCoords_.x, 0.0f, event.worldCoords_.z);
+            glm::vec3 p2 = glm::vec3(event.worldCoords_.x, 0.0f, firstClickCoords_.z);
+            glm::vec3 p3 = glm::vec3(event.worldCoords_.x, 0.0f, event.worldCoords_.z);
+            subjectPtr->updateVertex(p1, 1);
+            subjectPtr->updateVertex(p2, 2);
+            subjectPtr->updateVertex(p3, 3);
+        }
+       
     }
 }
