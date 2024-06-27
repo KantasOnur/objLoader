@@ -7,6 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "../Shader.hpp"
 
+
 namespace GLobjects {
     class VertexBuffer;
     class IndexBuffer;

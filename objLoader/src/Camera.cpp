@@ -5,14 +5,11 @@
 #include "Subject.hpp"
 #include "ShaderManager.h"
 
+
+
 Camera::Camera(GLFWwindow* window, const float& fov, const float& aspect, const float& near, const float& far)
 : window_(window), aspect_(aspect),handler_([this] (const MouseClickEvent& event) {onMouseClickEvent(event);})
 {
-    /*
-    std::unique_ptr<EventHandlerWrapper<MouseClickEvent>> handler = std::make_unique<EventHandlerWrapper<MouseClickEvent>>(handler_);
-    
-    EventManager::getInstance().sub(std::move(handler));
-     */
     perspective_ = glm::perspective(glm::radians(fov), aspect, near, far);
     orthogonal_ = glm::ortho(-aspect_, aspect_, -1.0f, 1.0f, near, far);
     projectionM_ = perspective_;
@@ -122,8 +119,29 @@ void Camera::Inputs()
     if(levelEditorMode_)
     {
         double xpos, ypos;
+        
         glfwGetCursorPos(window_, &xpos, &ypos);
+
         LevelEditorEvent event(xpos, ypos, eye_ + pixelToWorld(xpos, ypos, 640, 480, projectionM_, viewM_));
+        
+        if(xpos > 600)
+        {
+            eye_.x += 0.01;
+        }
+        else if(xpos < 40)
+        {
+            eye_.x -= 0.01;
+        }
+        if(ypos > 450)
+        {
+            eye_.z += 0.01;
+        }
+        else if(ypos < 30)
+        {
+            eye_.z -= 0.01;
+        }
+        
+        
         
         if(currentClick == GLFW_PRESS && prevClick == GLFW_RELEASE)
         {
@@ -137,6 +155,10 @@ void Camera::Inputs()
             //std::cout << "im holding" << std::endl;
             EventManager::getInstance().triggerEvent(event);
         }
+        
+
+        
+        //std::cout << xpos << std::endl;
     }
     
     

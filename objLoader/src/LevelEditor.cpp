@@ -7,6 +7,10 @@
 #include "Cube.hpp"
 #include "glm/gtx/transform.hpp"
 
+
+#define  SNAP_TO_GRID(value) (std::floor((value) * 20) / 20)
+
+
 LevelSubject::LevelSubject(Shader* shader) : Subject(shader)
 {
     data_ = std::vector<Layout>(4);
@@ -34,19 +38,23 @@ void LevelEditor::onLevelEditEvent(const LevelEditorEvent& event)
         std::shared_ptr<LevelSubject> subject = std::make_shared<LevelSubject>(GET_SHADER(Basic));
         firstClickCoords_ = event.worldCoords_;
         
-        subject->updateVertex(glm::vec3(event.worldCoords_.x, 0.0f, event.worldCoords_.z), 0);
+        subject->updateVertex(glm::vec3(SNAP_TO_GRID(event.worldCoords_.x), 0.0f, SNAP_TO_GRID(event.worldCoords_.z)), 0);
+        
         index_ = Scene::getInstance().addSubject(subject);
     }
     else
     {
-        std::cout << index_ << std::endl;
         auto subjectPtr = Scene::getInstance().getSubject(index_);
         
         if(firstClickCoords_ != event.worldCoords_)
         {
-            glm::vec3 p1 = glm::vec3(firstClickCoords_.x, 0.0f, event.worldCoords_.z);
-            glm::vec3 p2 = glm::vec3(event.worldCoords_.x, 0.0f, firstClickCoords_.z);
-            glm::vec3 p3 = glm::vec3(event.worldCoords_.x, 0.0f, event.worldCoords_.z);
+            glm::vec3 p1 = glm::vec3(SNAP_TO_GRID(firstClickCoords_.x), 0.0f, SNAP_TO_GRID(event.worldCoords_.z));
+            glm::vec3 p2 = glm::vec3(SNAP_TO_GRID(event.worldCoords_.x), 0.0f, SNAP_TO_GRID(firstClickCoords_.z));
+            glm::vec3 p3 = glm::vec3(SNAP_TO_GRID(event.worldCoords_.x), 0.0f, SNAP_TO_GRID(event.worldCoords_.z));
+            
+            std::cout << SNAP_TO_GRID(event.worldCoords_.x) << std::endl;
+            std::cout << "unspanned: " <<event.worldCoords_.x << std::endl;
+            
             subjectPtr->updateVertex(p1, 1);
             subjectPtr->updateVertex(p2, 2);
             subjectPtr->updateVertex(p3, 3);
